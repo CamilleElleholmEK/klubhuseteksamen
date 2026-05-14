@@ -1,0 +1,115 @@
+/*************** Reset *********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/******************************************* Mobile first *******************************************/
+body {
+  font-size: 1rem;
+  color: var(--dark2);
+  font-family: var(--stolzl);
+  font-weight: var(--regular);
+}
+
+h1 {
+  font-family: var(--gopher);
+  font-size: var(--h1-size);
+  font-weight: var(--bold);
+  line-height: 58px;
+}
+
+h2 {
+  font-size: var(--h2-size);
+  font-weight: var(--book);
+  line-height: 48px;
+}
+
+h3 {
+  font-family: var(--gopher);
+  font-size: var(--h3-size);
+  font-weight: var(--bold);
+  line-height: 38px;
+}
+
+h4 {
+  font-family: var(--gopher);
+  font-size: var(--h4-size);
+  font-weight: var(--bold);
+  line-height: 34px;
+}
+
+h5 {
+  font-family: var(--gopher);
+  font-size: var(--h5-size);
+  font-weight: var(--bold);
+  line-height: 28px;
+}
+
+p {
+  font-size: var(--body1-size);
+  font-weight: var(--book);
+  line-height: 24px;
+}
+
+/* Classes for text styling */
+
+.sub1 {
+  font-size: var(--sub1-size);
+  line-height: 28px;
+}
+
+.sub2 {
+  font-size: var(--sub2-size);
+  line-height: 24px;
+}
+
+.body2 {
+  font-size: var(--body2-size);
+  font-weight: var(--book);
+  line-height: 24px;
+}
+
+.cap1 {
+  font-size: var(--cap1-size);
+  line-height: 16px;
+}
+
+.cap2 {
+  font-size: var(--cap2-size);
+  font-weight: var(--medium);
+  line-height: 16px;
+}
+
+.cap3 {
+  font-size: var(--cap3-size);
+  font-weight: var(--medium);
+  line-height: 14px;
+}
+
+.ctal {
+  font-family: var(--gopher);
+  font-size: var(--ctal-size);
+  font-weight: var(--bold);
+  line-height: 20px;
+}
+
+.ctam {
+  font-family: var(--gopher);
+  font-size: var(--ctam-size);
+  font-weight: var(--medium);
+  line-height: 16px;
+}
+
+.ctas {
+  font-family: var(--gopher);
+  font-size: var(--ctas-size);
+  font-weight: var(--medium);
+  line-height: 16px;
+}
