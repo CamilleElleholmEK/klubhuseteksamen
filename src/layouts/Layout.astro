@@ -18,9 +18,31 @@ import "../css/general.css"
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<div class="logo">
+            <a href="/">
+                <img src="../../public/imgs/huslogo.svg" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="/mads">Producers,</a></li>
+                <li><a href="index.html">Artists,</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+            <button class="burger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </nav>
+		</header>
 		<slot />
-		<footer></footer>
+		<footer>
+			<p>Let's connect on <a href="/">Instagram</a>, write us an <a href="/">email</a>, or call us at <a href="/">+45 12 34 56 78</a></p>
+			<p class="footerLogo">Klubhuset</p>
+			<p>[Dortheavej 4, 2400 KBH NV] CVR: 4768486347863</p>
+		</footer>
 	</body>
 </html>
 
@@ -31,4 +53,138 @@ import "../css/general.css"
 		width: 100%;
 		height: 100%;
 	}
+	header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--dark4);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+.logo img {
+  width: auto;
+  height: 40px;
+}
+nav {
+  display: flex;
+  align-items: start;
+  margin-left: 5px;
+}
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+.menu a {
+  display: block;
+  padding: 0px;
+  color: transparent;
+  -webkit-text-stroke: 0.5px var(--secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  text-align: end;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+}
+.menu a:hover {
+  color: var(--secondary);
+}
+.burger {
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+.burger .line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary);
+  margin-bottom: 5px;
+  transition: 0.2s linear;
+}
+.burger {
+  display: none;
+}
+
+footer p{
+	text-transform: uppercase;
+	color: var(--secondary);
+}
+
+footer a{
+	color: var(--secondary);
+}
+
+footer {
+	background-image: url(../../public/imgs/footergraphic.svg);
+	background-repeat: no-repeat;
+	background-size: 25%;
+	background-position: -15% 10%;
+	overflow: visible;
+}
+
+.footerLogo {
+	font-family: var(--gopher);
+	font-size: var(--h3-size-desk);
+}
+@media screen and (max-width: 800px) {
+  .menu {
+    display: none;
+  }
+  header {
+	justify-content: space-between;
+  }
+  .burger {
+    display: block;
+    background-color: transparent;
+    border: 0;
+  }
+  .burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    transition: 0.2s linear;
+  }
+  .burger.active .line:nth-child(2) {
+    opacity: 0;
+    transition: 0.15s linear;
+  }
+  .burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    transition: 0.2s linear;
+  }
+  nav.active .menu {
+    display: block;
+    background-color: var(--dark4);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  nav.active .menu li {
+    margin: 10px 20px;
+  }
+  nav.active .menu a {
+    font-size: 24px;
+  }
+}
+
+
 </style>
+
+<script>
+	const burger = document.querySelector(".burger");
+const nav = document.querySelector("nav");
+burger.addEventListener("click", burgerClick);
+function burgerClick() {
+  burger.classList.toggle("active");
+  nav.classList.toggle("active");
+}
+</script>
