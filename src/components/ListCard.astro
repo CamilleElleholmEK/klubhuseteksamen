@@ -2,7 +2,7 @@
 const {project} = Astro.props
 ---
 
-<a href="/">
+<a href="/" class="listcard" data-producer={project.producer}>
 <article>
 <img src={project.albumcover.replace(/^"|"$/g, '')} />
 <div class="textbox">
@@ -13,18 +13,24 @@ const {project} = Astro.props
     <div class="right">
         <p>{project.producer}</p>
         <p>Placeholder text</p>
+    
     </div>
 </div>
 </article>
 </a>
 
 <style>
+    .hide {
+        display: none;
+    }
+
     article {
         margin-bottom: 24px;
     }
 
     img {
         border-radius: 3px;
+        aspect-ratio: 1/1;
     }
     
     a {
@@ -48,6 +54,12 @@ const {project} = Astro.props
 
     p {
         margin-top: 8px;
+    }
+
+    @media (min-width: 850px) {
+        article {
+            margin-bottom: 0;
+        }
     }
 
 </style>
