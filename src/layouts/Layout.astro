@@ -21,7 +21,7 @@ import "../css/general.css"
 		<header>
 			<div class="logo">
             <a href="/">
-                <img src="../../public/imgs/huslogo.svg" alt="Logo">
+                <img src="/imgs/huslogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
@@ -39,9 +39,9 @@ import "../css/general.css"
 		</header>
 		<slot />
 		<footer>
-			<p>Let's connect on <a href="/">Instagram</a>, write us an <a href="/">email</a>, or call us at <a href="/">+45 12 34 56 78</a></p>
+			<p id="line1">Let's connect on <a href="/">Instagram</a>, write us an <a href="/">email</a>, or call us at <a href="/">+45 12 34 56 78</a></p>
 			<p class="footerLogo">Klubhuset</p>
-			<p>[Dortheavej 4, 2400 KBH NV] CVR: 4768486347863</p>
+			<p id="line2">[Dortheavej 4, 2400 KBH NV] CVR: 4768486347863</p>
 		</footer>
 	</body>
 </html>
@@ -123,16 +123,30 @@ footer a{
 }
 
 footer {
-	background-image: url(../../public/imgs/footergraphic.svg);
+	background-image: url(../../public/imgs/footergraphiccut.svg);
 	background-repeat: no-repeat;
-	background-size: 25%;
-	background-position: -15% 10%;
+	background-position: bottom left;
 	overflow: visible;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .footerLogo {
 	font-family: var(--gopher);
 	font-size: var(--h3-size-desk);
+}
+
+#line1 {
+  width: 40ch;
+  margin-bottom: 16px;
+}
+
+#line2{
+  width: 23ch;
+  margin-top: 16px;
+  text-align: right;
+  margin-left: auto;
 }
 @media screen and (max-width: 800px) {
   .menu {
