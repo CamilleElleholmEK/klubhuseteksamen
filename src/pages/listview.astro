@@ -16,7 +16,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 ---
 
 <Layout>
-     <section>
+     <section id="projectsection">
           <p>pagination goes here</p>
           <div class="projectcontainer">
 {data.map((project) => <ListCard {project} />)}
@@ -27,5 +27,11 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 <style>
   body {
     background-image: var(--gradient-dark);
+    background-size: 100%;
   }
+
+   .projectcontainer {
+    width: 90vw;
+    margin: 0 auto;
+   }
 </style>
