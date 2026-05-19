@@ -1,4 +1,31 @@
 ---
 import "../css/custom.css"
 import "../css/general.css"
+import ListCard from "../components/ListCard.astro"
+import Layout from "../layouts/Layout.astro"
+
+const endpoint =
+  "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*&limit=10"
+
+const options = {
+  headers: { apikey: "sb_publishable_uJBiElMI8evEQetR2TtT2g_2o4KGmfP" }};
+
+const data = await fetch(endpoint, options).then((response) => response.json());
+
+
 ---
+
+<Layout>
+     <section>
+          <p>pagination goes here</p>
+          <div class="projectcontainer">
+{data.map((project) => <ListCard {project} />)}
+</div>
+</section>
+</Layout>
+
+<style>
+  body {
+    background-image: var(--gradient-dark);
+  }
+</style>
