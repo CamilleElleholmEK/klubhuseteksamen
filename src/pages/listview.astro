@@ -5,7 +5,7 @@ import ListCard from "../components/ListCard.astro"
 import Layout from "../layouts/Layout.astro"
 
 const endpoint =
-  "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*&limit=10"
+  "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*"
 
 const options = {
   headers: { apikey: "sb_publishable_uJBiElMI8evEQetR2TtT2g_2o4KGmfP" }};
@@ -28,16 +28,16 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     </div>
     <div id="filter-panel">
       <div class="filter-content" data-panel="producer" hidden>
-        <button class="filter-btn" data-producer="christian">Christian Afel</button>
-        <button class="filter-btn" data-producer="Mads Mølgaard Helbæk">Mads Mølgaard</button>
-        <button class="filter-btn" data-producer="peter">Peter Sloth</button>
-        <button class="filter-btn" data-producer="felix">Felix Ziska</button>
-        <button class="filter-btn" data-producer="joakim">Joakim Lambek</button>
+        <button class="filter-btn producer-btn" data-producer="christian">Christian Afel</button>
+        <button class="filter-btn producer-btn" data-producer="Mads Mølgaard Helbæk">Mads Mølgaard</button>
+        <button class="filter-btn producer-btn" data-producer="peter">Peter Sloth</button>
+        <button class="filter-btn producer-btn" data-producer="felix">Felix Ziska</button>
+        <button class="filter-btn producer-btn" data-producer="joakim">Joakim Lambek</button>
       </div>
       <div class="filter-content" data-panel="genre" hidden>
-        <button class="filter-btn">Pop</button>
-        <button class="filter-btn">Indie</button>
-        <button class="filter-btn">Rock</button>
+        <button data-genre="Pop" class="filter-btn genre-btn">Pop</button>
+        <button data-genre="Indie rock" class="filter-btn genre-btn">Indie rock</button>
+        <button data-genre="Rock" class="filter-btn genre-btn">Rock</button>
       </div>
     </div>
   </section>
@@ -58,6 +58,20 @@ const data = await fetch(endpoint, options).then((response) => response.json());
    .projectcontainer {
     width: 90vw;
     margin: 0 auto;
+   }
+
+   .filter-btn {
+    background-color: transparent;
+    font-family: var(--stolzl);
+    color: var(--secondary);
+    padding: 3px 18px 3px 6px;
+    border: solid 1px var(--secondary);
+    border-top-right-radius: 75px;
+   }
+
+   .active {
+    background-color: var(--contrast);
+    border: solid 1px var(--contrast);
    }
 
    @media (min-width: 850px) {
@@ -104,10 +118,14 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 });
 
 // Filtrering
-document.querySelectorAll(".filter-btn").forEach((button) => button.addEventListener("click",filter));
+document.querySelectorAll<HTMLElement>(".producer-btn").forEach((button) => button.addEventListener("click",filterproducer));
+document.querySelectorAll<HTMLElement>(".genre-btn").forEach((button) => button.addEventListener("click",filtergenre));
+document.getElementById("#clear-all").addEventListener("click",clearall);
 
-function filter(e) {
-  const cards = document.querySelectorAll(".listcard");
+  // Producere
+  // C note: tilføj if knappen har class active
+  function filterproducer(e) {
+  const cards = document.querySelectorAll<HTMLElement>(".listcard");
   const valgtproducer = e.target.dataset.producer;
   cards.forEach((card) => {
     if (card.dataset.producer == valgtproducer) {
@@ -116,5 +134,26 @@ function filter(e) {
       card.classList.add("hide");
     }
   })
+
+}
+
+  // Genre
+  function filtergenre(e) {
+  const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  const valgtgenre = e.target.dataset.genre;
+  cards.forEach((card) => {
+    if (JSON.parse(card.dataset.genre).includes(valgtgenre)) {
+      card.classList.remove("hide");
+    } else {
+      card.classList.add("hide");
+    }
+  })
+}
+
+// Clear all
+function clearall(e) {
+const cards = document.querySelectorAll<HTMLElement>(".listcard");
+
+  cards.forEach((card) => {card.classList.remove("hide")});
 }
 </script>

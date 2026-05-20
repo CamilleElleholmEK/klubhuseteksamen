@@ -2,7 +2,7 @@
 const {project} = Astro.props
 ---
 
-<a href="/" class="listcard" data-producer={project.producer}>
+<a href="/" class="listcard" data-producer={project.producer} data-genre={JSON.stringify(project.genre)}>
 <article>
 <img src={project.albumcover.replace(/^"|"$/g, '')} />
 <div class="textbox">
@@ -22,6 +22,7 @@ const {project} = Astro.props
 <style>
     .hide {
         display: none;
+        border: none;
     }
 
     article {
