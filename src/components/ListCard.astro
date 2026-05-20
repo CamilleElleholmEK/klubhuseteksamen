@@ -1,0 +1,66 @@
+---
+const {project} = Astro.props
+---
+
+<a href="/" class="listcard" data-producer={project.producer} data-genre={JSON.stringify(project.genre)}>
+<article>
+<img src={project.albumcover.replace(/^"|"$/g, '')} />
+<div class="textbox">
+    <div class="left">
+        <p>{project.artist}</p>
+        <p>{project.titel_album}</p>
+    </div>
+    <div class="right">
+        <p>{project.producer}</p>
+        <p>Placeholder text</p>
+    
+    </div>
+</div>
+</article>
+</a>
+
+<style>
+    .hide {
+        display: none;
+        border: none;
+    }
+
+    article {
+        margin-bottom: 24px;
+    }
+
+    img {
+        border-radius: 3px;
+        aspect-ratio: 1/1;
+    }
+    
+    a {
+        text-decoration: none;
+        color: var(--secondary);
+    }
+
+    .textbox{
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .left p:nth-child(1) {
+        color: var(--contrast);
+    }
+
+    p {
+        margin-top: 8px;
+    }
+
+    @media (min-width: 850px) {
+        article {
+            margin-bottom: 0;
+        }
+    }
+
+</style>

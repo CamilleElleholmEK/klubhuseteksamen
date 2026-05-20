@@ -1,4 +1,159 @@
 ---
 import "../css/custom.css"
 import "../css/general.css"
+import ListCard from "../components/ListCard.astro"
+import Layout from "../layouts/Layout.astro"
+
+const endpoint =
+  "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*"
+
+const options = {
+  headers: { apikey: "sb_publishable_uJBiElMI8evEQetR2TtT2g_2o4KGmfP" }};
+
+const data = await fetch(endpoint, options).then((response) => response.json());
+
+
 ---
+
+<Layout>
+  <section>
+    <h1>Artister</h1>
+    <div class="filterbar">
+      <div>
+      <button class="filter-toggle" data-target="producer">Producer</button>
+      <button class="filter-toggle" data-target="genre">Genre</button>
+      </div> 
+      <button id="clear-all" data-target="clear">Clear all filters</button>
+      <button>Placeholder</button>
+    </div>
+    <div id="filter-panel">
+      <div class="filter-content" data-panel="producer" hidden>
+        <button class="filter-btn producer-btn" data-producer="christian">Christian Afel</button>
+        <button class="filter-btn producer-btn" data-producer="Mads Mølgaard Helbæk">Mads Mølgaard</button>
+        <button class="filter-btn producer-btn" data-producer="peter">Peter Sloth</button>
+        <button class="filter-btn producer-btn" data-producer="felix">Felix Ziska</button>
+        <button class="filter-btn producer-btn" data-producer="joakim">Joakim Lambek</button>
+      </div>
+      <div class="filter-content" data-panel="genre" hidden>
+        <button data-genre="Pop" class="filter-btn genre-btn">Pop</button>
+        <button data-genre="Indie rock" class="filter-btn genre-btn">Indie rock</button>
+        <button data-genre="Rock" class="filter-btn genre-btn">Rock</button>
+      </div>
+    </div>
+  </section>
+  <section id="projectsection">
+    <p>pagination goes here</p>
+    <div class="projectcontainer">
+      {data.map((project) => <div class="project"><ListCard {project} /></div>)}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  body {
+    background-image: var(--gradient-dark);
+    background-size: 100%;
+  }
+
+   .projectcontainer {
+    width: 90vw;
+    margin: 0 auto;
+   }
+
+   .filter-btn {
+    background-color: transparent;
+    font-family: var(--stolzl);
+    color: var(--secondary);
+    padding: 3px 18px 3px 6px;
+    border: solid 1px var(--secondary);
+    border-top-right-radius: 75px;
+   }
+
+   .active {
+    background-color: var(--contrast);
+    border: solid 1px var(--contrast);
+   }
+
+   @media (min-width: 850px) {
+    .projectcontainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0px;
+      border-top: solid 0.5px var(--secondary);
+    }
+
+    .project {
+      padding: 16px;
+    }
+
+    .projectcontainer .project:nth-child(odd) {
+      border-bottom: solid 0.5px var(--secondary);
+      border-right: solid 0.5px var(--secondary);
+      padding-left: 0px;
+    }
+
+    .projectcontainer .project:nth-child(even) {
+      border-bottom: solid 0.5px var(--secondary);
+      padding-right: 0px;
+    }
+   }
+</style>
+
+<script>
+
+  // Viser og skjuler filtreringspaneler
+  const toggles = document.querySelectorAll<HTMLElement>(".filter-toggle");
+  const panels = document.querySelectorAll<HTMLElement>(".filter-content");
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click",() => {
+      const target = toggle.dataset.target
+      panels.forEach(p => p.hidden = p.dataset.panel !== target);
+    })
+  })
+
+  // Ændrer udseende på den aktive knap 
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => btn.classList.toggle('active'));
+});
+
+// Filtrering
+document.querySelectorAll<HTMLElement>(".producer-btn").forEach((button) => button.addEventListener("click",filterproducer));
+document.querySelectorAll<HTMLElement>(".genre-btn").forEach((button) => button.addEventListener("click",filtergenre));
+document.getElementById("#clear-all").addEventListener("click",clearall);
+
+  // Producere
+  // C note: tilføj if knappen har class active
+  function filterproducer(e) {
+  const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  const valgtproducer = e.target.dataset.producer;
+  cards.forEach((card) => {
+    if (card.dataset.producer == valgtproducer) {
+      card.classList.remove("hide");
+    } else {
+      card.classList.add("hide");
+    }
+  })
+
+}
+
+  // Genre
+  function filtergenre(e) {
+  const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  const valgtgenre = e.target.dataset.genre;
+  cards.forEach((card) => {
+    if (JSON.parse(card.dataset.genre).includes(valgtgenre)) {
+      card.classList.remove("hide");
+    } else {
+      card.classList.add("hide");
+    }
+  })
+}
+
+// Clear all
+function clearall(e) {
+const cards = document.querySelectorAll<HTMLElement>(".listcard");
+
+  cards.forEach((card) => {card.classList.remove("hide")});
+}
+</script>
