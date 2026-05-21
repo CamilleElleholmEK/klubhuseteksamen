@@ -24,7 +24,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
       <button class="filter-toggle" data-target="genre">Genre</button>
       </div> 
       <button id="clear-all" data-target="clear">Clear all filters</button>
-      <button>Placeholder</button>
+      <button class="filter-toggle" data-target="sort">Sort by</button>
     </div>
     <div id="filter-panel">
       <div class="filter-content" data-panel="producer" hidden>
@@ -35,16 +35,50 @@ const data = await fetch(endpoint, options).then((response) => response.json());
         <button class="filter-btn producer-btn" data-producer="joakim">Joakim Lambek</button>
       </div>
       <div class="filter-content" data-panel="genre" hidden>
-        <button data-genre="Pop" class="filter-btn genre-btn">Pop</button>
+        <button data-genre="Alternative" class="filter-btn genre-btn">Alternative</button>
+        <button data-genre="Alternative Pop" class="filter-btn genre-btn">Alternative pop</button>
+        <button data-genre="Alternative rock" class="filter-btn genre-btn">Alternative rock</button>
+        <button data-genre="Ambient" class="filter-btn genre-btn">Ambient</button>
+        <button data-genre="Chamber pop" class="filter-btn genre-btn">Chamber pop</button>
+        <button data-genre="Classic" class="filter-btn genre-btn">Classic</button>
+        <button data-genre="Contemporary" class="filter-btn genre-btn">Contemporary</button>
+        <button data-genre="Contemporary jazz" class="filter-btn genre-btn">Contemporary jazz</button>
+        <button data-genre="Dream pop" class="filter-btn genre-btn">Dream pop</button>
+        <button data-genre="Electronic" class="filter-btn genre-btn">Electronic</button>
+        <button data-genre="Electronic pop" class="filter-btn genre-btn">Electronic pop</button>
+        <button data-genre="Experimental" class="filter-btn genre-btn">Experimental</button>
+        <button data-genre="Folk" class="filter-btn genre-btn">Folk</button>
+        <button data-genre="Funk pop" class="filter-btn genre-btn">Funk pop</button>
+        <button data-genre="Fusion" class="filter-btn genre-btn">Fusion</button>
+        <button data-genre="Garage rock" class="filter-btn genre-btn">Garage rock</button>
+        <button data-genre="Hiphop" class="filter-btn genre-btn">Hiphop</button>
+        <button data-genre="Indie" class="filter-btn genre-btn">Indie</button>
+        <button data-genre="Indie pop" class="filter-btn genre-btn">Indie pop</button>
         <button data-genre="Indie rock" class="filter-btn genre-btn">Indie rock</button>
+        <button data-genre="Jazz" class="filter-btn genre-btn">Jazz</button>
+        <button data-genre="Nordic folk" class="filter-btn genre-btn">Nordic folk</button>
+        <button data-genre="Pop" class="filter-btn genre-btn">Pop</button>
+        <button data-genre="Pop rock" class="filter-btn genre-btn">Pop rock</button>
+        <button data-genre="Power pop" class="filter-btn genre-btn">Power pop</button>
+        <button data-genre="Progressive rock" class="filter-btn genre-btn">Progressive rock</button>
+        <button data-genre="Psychedelic rock" class="filter-btn genre-btn">Psychedelic rock</button>
+        <button data-genre="R&B" class="filter-btn genre-btn">R&B</button>
+        <button data-genre="Rap" class="filter-btn genre-btn">Rap</button>
         <button data-genre="Rock" class="filter-btn genre-btn">Rock</button>
+        <button data-genre="Singer-songwriter" class="filter-btn genre-btn">Singer-songwriter</button>
+      </div>
+      <div class="filter-content" data-panel="sort" hidden>
+        <button data-artist="az" class="sort-btn">Artist A-Z</button>
+        <button data-artist="za" class="sort-btn">Artist Z-A</button>
+        <button data-year="acc" class="sort-btn">Release accending</button>
+        <button data-year="dec" class="sort-btn">Release descending</button>
       </div>
     </div>
   </section>
   <section id="projectsection">
     <p>pagination goes here</p>
     <div class="projectcontainer">
-      {data.map((project) => <div class="project"><ListCard {project} /></div>)}
+      {data.map((project) => <ListCard {project} />)}
     </div>
   </section>
 </Layout>
@@ -60,7 +94,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     margin: 0 auto;
    }
 
-   .filter-btn {
+   button {
     background-color: transparent;
     font-family: var(--stolzl);
     color: var(--secondary);
@@ -78,23 +112,15 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     .projectcontainer {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0px;
+      gap: 30px;
       border-top: solid 0.5px var(--secondary);
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background: linear-gradient(to right, transparent 0%, transparent 49.9%, var(--secondary) 50%, transparent 50.1%);
     }
 
     .project {
       padding: 16px;
-    }
-
-    .projectcontainer .project:nth-child(odd) {
-      border-bottom: solid 0.5px var(--secondary);
-      border-right: solid 0.5px var(--secondary);
-      padding-left: 0px;
-    }
-
-    .projectcontainer .project:nth-child(even) {
-      border-bottom: solid 0.5px var(--secondary);
-      padding-right: 0px;
     }
    }
 </style>
@@ -104,29 +130,58 @@ const data = await fetch(endpoint, options).then((response) => response.json());
   // Viser og skjuler filtreringspaneler
   const toggles = document.querySelectorAll<HTMLElement>(".filter-toggle");
   const panels = document.querySelectorAll<HTMLElement>(".filter-content");
+  // const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  
 
   toggles.forEach(toggle => {
-    toggle.addEventListener("click",() => {
-      const target = toggle.dataset.target
-      panels.forEach(p => p.hidden = p.dataset.panel !== target);
-    })
-  })
+  toggle.addEventListener("click", () => {
+    const target = toggle.dataset.target;
+    const targetPanel = [...panels].find(p => p.dataset.panel === target);
 
-  // Ændrer udseende på den aktive knap 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => btn.classList.toggle('active'));
+    panels.forEach(p => {
+      if (p.dataset.panel !== target) p.hidden = true;
+    });
+    // Fjern active fra andre toggles
+    toggles.forEach(t => { if (t !== toggle) t.classList.remove("active") });
+
+    targetPanel.hidden = !targetPanel.hidden;
+    toggle.classList.toggle("active", !targetPanel.hidden);
+  });
 });
 
+
+// Funktion der lytter på knapper, ændrer deres udseende og sender videre til rette filtrering
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', btnactive );
+});
+
+function btnactive(e) {
+  const valgt = e.target;
+  const cards = document.querySelectorAll(".listcard");
+  const btns = document.querySelectorAll(".filter-btn");
+
+  if (valgt.classList.contains("active")) {
+    valgt.classList.remove("active");
+    cards.forEach((card) => { card.classList.remove("hide"); });
+  } else {
+    btns.forEach((btn) => { btn.classList.remove("active"); });
+    valgt.classList.add("active");
+
+    if (valgt.classList.contains("producer-btn")) {
+      filterproducer(e);
+    } else {
+      filtergenre(e);
+    }
+  }
+}
+
 // Filtrering
-document.querySelectorAll<HTMLElement>(".producer-btn").forEach((button) => button.addEventListener("click",filterproducer));
-document.querySelectorAll<HTMLElement>(".genre-btn").forEach((button) => button.addEventListener("click",filtergenre));
-document.getElementById("#clear-all").addEventListener("click",clearall);
 
   // Producere
-  // C note: tilføj if knappen har class active
   function filterproducer(e) {
-  const cards = document.querySelectorAll<HTMLElement>(".listcard");
   const valgtproducer = e.target.dataset.producer;
+  const cards = document.querySelectorAll(".listcard");
+
   cards.forEach((card) => {
     if (card.dataset.producer == valgtproducer) {
       card.classList.remove("hide");
@@ -142,7 +197,7 @@ document.getElementById("#clear-all").addEventListener("click",clearall);
   const cards = document.querySelectorAll<HTMLElement>(".listcard");
   const valgtgenre = e.target.dataset.genre;
   cards.forEach((card) => {
-    if (JSON.parse(card.dataset.genre).includes(valgtgenre)) {
+    if (card.dataset.genre && JSON.parse(card.dataset.genre).includes(valgtgenre)) {
       card.classList.remove("hide");
     } else {
       card.classList.add("hide");
@@ -150,10 +205,57 @@ document.getElementById("#clear-all").addEventListener("click",clearall);
   })
 }
 
-// Clear all
-function clearall(e) {
-const cards = document.querySelectorAll<HTMLElement>(".listcard");
 
-  cards.forEach((card) => {card.classList.remove("hide")});
+// Sortering
+// Knapper ændrer udseende
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', sortactive );
+});
+
+function sortactive(e) {
+  const valgt = e.target;
+  const cards = document.querySelectorAll(".listcard");
+  const btns = document.querySelectorAll(".sort-btn");
+
+  if (valgt.classList.contains("active")) {
+    valgt.classList.remove("active");
+    cards.forEach((card) => { card.classList.remove("hide"); });
+  } else {
+    btns.forEach((btn) => { btn.classList.remove("active"); });
+    valgt.classList.add("active");
+    sort(e)
+  }
 }
+
+// Selve sortering foregår her
+
+function sort(e) {
+  const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  const container = document.querySelector(".projectcontainer");
+  container.textContent="";
+  let newList;
+
+  if (e.target.dataset.year) {
+    const valgtdir = e.target.dataset.year;
+    if (valgtdir == "acc") {
+    newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.year - secondItem.dataset.year,
+  );
+  } else {
+    newList = [...cards].sort((firstItem, secondItem) => secondItem.dataset.year - firstItem.dataset.year,
+  );
+  } 
+  } else {
+    const valgtdir = e.target.dataset.artist;
+    if (valgtdir == "az") {
+      newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.artist.localeCompare(secondItem.dataset.artist, "da")
+  );
+    } else {
+      newList = [...cards].sort((firstItem, secondItem) => secondItem.dataset.artist.localeCompare(firstItem.dataset.artist, "da")
+  );
+    }
+  }
+   newList.forEach((card) => container.append(card));
+}
+
+
 </script>

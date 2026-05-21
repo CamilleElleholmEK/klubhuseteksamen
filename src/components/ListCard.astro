@@ -2,17 +2,16 @@
 const {project} = Astro.props
 ---
 
-<a href="/" class="listcard" data-producer={project.producer} data-genre={JSON.stringify(project.genre)}>
+<a href="/" class="listcard" data-producer={project.producer} data-genre={JSON.stringify(project.genre)} data-role={JSON.stringify(project.role)} data-year={project.year} data-artist={project.artist}>
 <article>
 <img src={project.albumcover.replace(/^"|"$/g, '')} />
 <div class="textbox">
-    <div class="left">
+    <div class="top">
         <p>{project.artist}</p>
-        <p>{project.titel_album}</p>
-    </div>
-    <div class="right">
         <p>{project.producer}</p>
-        <p>Placeholder text</p>
+    </div>
+    <div class="bottom">
+        <p>{project.titel_album}</p>
     
     </div>
 </div>
@@ -26,7 +25,8 @@ const {project} = Astro.props
     }
 
     article {
-        margin-bottom: 24px;
+        margin-bottom: 15px;
+        border-bottom: solid 0.5px var(--secondary);
     }
 
     img {
@@ -37,19 +37,16 @@ const {project} = Astro.props
     a {
         text-decoration: none;
         color: var(--secondary);
+        display: grid;
     }
 
-    .textbox{
+    .top{
         display: flex;
         justify-content: space-between;
         text-decoration: none;
     }
 
-    .right {
-        text-align: right;
-    }
-
-    .left p:nth-child(1) {
+    .top p:nth-child(1) {
         color: var(--contrast);
     }
 
