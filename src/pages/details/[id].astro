@@ -1,7 +1,9 @@
 ---
+// @ts-nocheck
 import "../../css/custom.css"
 import "../../css/general.css"
 import Layout from "../../layouts/Layout.astro"
+import ArtistLayout from "../../layouts/ArtistLayout.astro"
 import ListCard from "../../components/ListCard.astro"
 
 export async function getStaticPaths() {
@@ -36,9 +38,10 @@ const related = allAlbums
   .filter(a => a.titel_album !== project.titel_album)
   .filter(a => a.genre?.includes(project.genre[0]))
   .slice(0, 2);
+  
 ---
 
-<Layout>
+<ArtistLayout>
 <section id="topsection">
 <div id="outer">
     <div id="spotifywrapper">
@@ -87,7 +90,7 @@ const related = allAlbums
     {related.map((project) => <ListCard {project} />)}
 </div>
 </section>
-</Layout>
+</ArtistLayout>
 
 <style>
    body {

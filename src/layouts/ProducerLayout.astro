@@ -27,7 +27,7 @@ import "../css/general.css"
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="/mads">Producers,</a></li>
+                <li><a class="activenav" href="/mads">Producers,</a></li>
                 <li><a href="/listview">Artists,</a></li>
                 <li><a href="/">Contact</a></li>
             </ul>
@@ -79,12 +79,12 @@ import "../css/general.css"
   grid-column: 1/2;
 }
 #logolink img:nth-child(1) {
-  opacity: 100%;
+  opacity: 0%;
   transition: opacity 0.2s;
 }
 #logolink:hover img:nth-child(1) {
   z-index: 5;
-  opacity: 0%;
+  opacity: 100%;
 }
 nav {
   display: flex;
@@ -112,9 +112,19 @@ nav {
   font-size: 2.25rem;
   text-transform: uppercase;
 }
+
 .menu a:hover {
   color: var(--secondary);
 }
+
+.menu .activenav {
+    color: var(--secondary);
+}
+
+.menu .activenav:hover {
+    color: transparent;
+}
+
 .burger {
   width: 30px;
   height: 20px;
@@ -213,7 +223,7 @@ footer {
 </style>
 
 <script>
-  // @ts-nocheck
+    // @ts-nocheck
 	const burger = document.querySelector(".burger");
 const nav = document.querySelector("nav");
 burger.addEventListener("click", burgerClick);
