@@ -2,6 +2,7 @@
 import "../../css/custom.css"
 import "../../css/general.css"
 import Layout from "../../layouts/Layout.astro"
+import ListCard from "../../components/ListCard.astro"
 
 export async function getStaticPaths() {
   const endpoint =
@@ -23,20 +24,68 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const { project } = Astro.props;
+
+// Hent albums med samme genre (ekskluder det nuværende)
+const res = await fetch(
+  `https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*`,
+  { headers: { apikey: "sb_publishable_uJBiElMI8evEQetR2TtT2g_2o4KGmfP" } }
+);
+const allAlbums = await res.json();
+
+const related = allAlbums
+  .filter(a => a.titel_album !== project.titel_album)
+  .filter(a => a.genre?.includes(project.genre[0]))
+  .slice(0, 2);
 ---
 
 <Layout>
 <section id="topsection">
-<div id="glitchbox">
-<h1>{project.titel_album}</h1>
-<p>{project.titel_album}</p>
-<p>{project.titel_album}</p>
-<p>{project.titel_album}</p>
+<div id="outer">
+    <div id="spotifywrapper">
+    <img src={project.albumcover.replace(/^"|"$/g, '')} />
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src={project.spotify.replace(/^"|"$/g, '')} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div id="inner">
+        <div id="glitchbox">
+         <h1>{project.titel_album}</h1>
+         <p>{project.titel_album}</p>
+         <p>{project.titel_album}</p>
+         <p>{project.titel_album}</p>
+        </div>
+        <h5>{project.artist}</h5>
+        <h6>{project.year}</h6>
+        <div id="details">
+            <div id="genre">
+                <h6>Genre:</h6>
+                <p class="cap2">{project.genre.join(', ')}</p>
+            </div>
+            <div id="about">
+                <h6>About</h6>
+                <div id="aboutlists">
+                    <div id="list1">
+                        <p class="cap2">Producer</p>
+                        <p class="cap2">Engineer</p>
+                        <p class="cap2">Label</p>
+                        <p class="cap2">Accolades</p>
+                    </div>
+                    <div id="list2">
+                        <p class="cap2">Mads Mølgaard</p>
+                        <p class="cap2">Mads Mølgaard</p>
+                        <p class="cap2">Sony</p>
+                        <p class="cap2">DMA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<iframe data-testid="embed-iframe" style="border-radius:12px" src={project.spotify.replace(/^"|"$/g, '')} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </section>
 <section id="bottomsection">
-
+<div id="samegenre">
+    <a href="/">{project.genre[0]}</a>
+    <h2>Same genre</h2>
+    {related.map((project) => <ListCard {project} />)}
+</div>
 </section>
 </Layout>
 
@@ -45,6 +94,9 @@ const { project } = Astro.props;
         background-color: var(--dark4);
     }
 
+    img {
+        width: 300px;
+    }
     #glitchbox {
         display: grid;
         grid-template-columns: 1fr;
@@ -86,4 +138,36 @@ const { project } = Astro.props;
         filter: blur(2px);
         padding-left: 5.2px;
     }
+
+    #details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #aboutlists {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #samegenre {
+        display: flex;
+        justify-content: end;
+    }
+
+    @media (min-width: 850px) {
+    
+        #outer {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+
+        #inner {
+            order: -1;
+        }
+
+        #details {
+            width: fit-content;
+            place-self: end end;
+        }
+   }
 </style>

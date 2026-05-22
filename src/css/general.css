@@ -13,7 +13,7 @@ img {
 /******************************************* Mobile first *******************************************/
 body {
   font-size: 1rem;
-  color: var(--dark2);
+  color: var(--secondary);
   font-family: var(--stolzl);
   font-weight: var(--regular);
 }
