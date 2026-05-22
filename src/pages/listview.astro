@@ -2,7 +2,7 @@
 import "../css/custom.css"
 import "../css/general.css"
 import ListCard from "../components/ListCard.astro"
-import Layout from "../layouts/Layout.astro"
+import ArtistLayout from "../layouts/ArtistLayout.astro"
 
 const endpoint =
   "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*"
@@ -15,7 +15,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 
 ---
 
-<Layout>
+<ArtistLayout>
   <section>
     <h1>Artister</h1>
     <div class="filterbar">
@@ -77,11 +77,11 @@ const data = await fetch(endpoint, options).then((response) => response.json());
   </section>
   <section id="projectsection">
     <p>pagination goes here</p>
-    <div class="projectcontainer">
-      {data.map((project) => <ListCard {project} />)}
+    <div class="projectcontainer"> 
+      {data.map((project) => <ListCard {project}/> )}
     </div>
   </section>
-</Layout>
+</ArtistLayout>
 
 <style>
   body {
@@ -126,6 +126,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 </style>
 
 <script>
+  // @ts-nocheck
 
   // Viser og skjuler filtreringspaneler
   const toggles = document.querySelectorAll<HTMLElement>(".filter-toggle");
