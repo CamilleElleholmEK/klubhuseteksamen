@@ -22,96 +22,96 @@ h1 {
   font-family: var(--gopher);
   font-size: var(--h1-size);
   font-weight: var(--bold);
-  line-height: 58px;
+  line-height: 85px;
 }
 
 h2 {
   font-size: var(--h2-size);
-  font-weight: var(--book);
-  line-height: 48px;
+  font-weight: var(--bold);
+  line-height: 87px;
 }
 
 h3 {
   font-family: var(--gopher);
   font-size: var(--h3-size);
   font-weight: var(--bold);
-  line-height: 38px;
+  line-height: 36px;
+  letter-spacing: -3%;
 }
 
 h4 {
-  font-family: var(--gopher);
   font-size: var(--h4-size);
-  font-weight: var(--bold);
-  line-height: 34px;
+  font-weight: var(--book);
+  line-height: 52px;
+  letter-spacing: -3%;
 }
 
 h5 {
-  font-family: var(--gopher);
   font-size: var(--h5-size);
-  font-weight: var(--bold);
-  line-height: 28px;
+  font-weight: var(--book);
+  line-height: 31px;
 }
 
 p {
   font-size: var(--body1-size);
   font-weight: var(--book);
-  line-height: 24px;
+  line-height: 15px;
 }
 
 /* Classes for text styling */
 
-.sub1 {
-  font-size: var(--sub1-size);
-  line-height: 28px;
+.h12 {
+  font-size: var(--h12-size);
+  font-family: var(--gopher);
+  line-height: 57px;
+  font-weight: var(--bold);
 }
 
-.sub2 {
-  font-size: var(--sub2-size);
-  line-height: 24px;
+.nav {
+  font-size: var(--nav-size);
+  line-height: 12px;
+  font-weight: var(--bold);
 }
 
-.body2 {
-  font-size: var(--body2-size);
-  font-weight: var(--book);
-  line-height: 24px;
+.tag {
+  font-family: var(--gopher);
+  font-size: var(--tag-size);
+  line-height: 18px;
 }
 
 .cap1 {
   font-size: var(--cap1-size);
-  line-height: 16px;
+  font-weight: var(--book);
 }
 
 .cap2 {
   font-size: var(--cap2-size);
-  font-weight: var(--medium);
   line-height: 16px;
 }
 
 .cap3 {
   font-size: var(--cap3-size);
-  font-weight: var(--medium);
+  font-weight: var(--book);
   line-height: 14px;
 }
 
 .ctal {
   font-family: var(--gopher);
   font-size: var(--ctal-size);
-  font-weight: var(--bold);
   line-height: 20px;
 }
 
 .ctam {
   font-family: var(--gopher);
   font-size: var(--ctam-size);
-  font-weight: var(--medium);
-  line-height: 16px;
+  line-height: 20px;
 }
 
 .ctas {
   font-family: var(--gopher);
   font-size: var(--ctas-size);
   font-weight: var(--medium);
-  line-height: 16px;
+  line-height: 9px;
 }
 
 /********************************************** Desktop *************************************/
@@ -119,20 +119,21 @@ p {
 @media (min-width: 850px) {
   h1 {
     font-size: var(--h1-size-desk);
-    line-height: 58px;
+    line-height: 200px;
+    font-weight: var(--medium);
   }
 
   h2 {
     font-size: var(--h2-size-desk);
-    line-height: 48px;
+    line-height: 161px;
   }
 
   h3 {
     font-size: var(--h3-size-desk);
-    line-height: 38px;
+    line-height: 105px;
   }
 
-  h4 {
+  /* h4 {
     font-size: var(--h4-size-desk);
     line-height: 34px;
   }
@@ -145,11 +146,11 @@ p {
   p {
     font-size: var(--body1-size-desk);
     line-height: 24px;
-  }
+  } */
 
   /* Classes for text styling */
 
-  .sub1 {
+  /* .sub1 {
     font-size: var(--sub1-size-desk);
     line-height: 28px;
   }
@@ -192,5 +193,5 @@ p {
   .ctas {
     font-size: var(--ctas-size-desk);
     line-height: 16px;
-  }
+  } */
 }
