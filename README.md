@@ -139,7 +139,7 @@ Vi har prøvet ikke at skrive kommentarer til helt åbenlyse ting, men kun dér 
 **Eksempel:**
 
 ```javascript
-// Henter opskrifter fra Rest API'et
+// Henter album fra Rest API'et
 export async function getStaticPaths() {
   const endpoint =
     "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*";
