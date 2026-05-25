@@ -94,9 +94,14 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 </ArtistLayout>
 
 <style>
+  html {
+    height: 100%;
+  }
+  
   body {
     background-image: var(--gradient-dark);
-    background-size: 100%;
+    background-attachment: fixed;
+    min-height: 100%;
   }
 
    section {
@@ -217,6 +222,10 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 
    .filter-btn {
     margin: 2px;
+   }
+
+   .projectcontainer {
+    margin-bottom: 40px;
    }
 
    @media (min-width: 850px) {
