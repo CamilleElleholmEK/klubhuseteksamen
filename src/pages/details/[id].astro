@@ -53,7 +53,6 @@ const related = allAlbums
          <h1>{project.titel_album}</h1>
          <p>{project.titel_album}</p>
          <p>{project.titel_album}</p>
-         <p>{project.titel_album}</p>
         </div>
         <h5>{project.artist}</h5>
         <h6>{project.year}</h6>
@@ -119,27 +118,23 @@ const related = allAlbums
     }
 
     #glitchbox h1:nth-child(1) {
-        color: var(--secondary);
-        filter: blur(2px);
-        padding-left: 1px;
+        color: #f00;
+        filter: blur(1.5px);
+        mix-blend-mode: lighten;
     }
 
     #glitchbox p:nth-child(2) {
         color: #00fd00;
-        mix-blend-mode: screen;
-        filter: blur(4px);
-        padding-left: 1.5px;
+        mix-blend-mode: lighten;
+        filter: blur(1.5px);
+        padding-left: 3px;
     }
 
     #glitchbox p:nth-child(3) {
-        color: #f00;
-        filter: blur(2px);
-    }
-
-    #glitchbox p:nth-child(4) {
-        color: #0000f8;
-        filter: blur(2px);
-        padding-left: 5.2px;
+        color: #0000ff;
+        filter: blur(1.5px);
+        mix-blend-mode: lighten;
+        padding-left: 6px;
     }
 
     #details {
