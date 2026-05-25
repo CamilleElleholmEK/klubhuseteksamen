@@ -46,24 +46,25 @@ const related = allAlbums
 <div id="outer">
     <div id="spotifywrapper">
     <img src={project.albumcover.replace(/^"|"$/g, '')} />
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src={project.spotify.replace(/^"|"$/g, '')} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
+        <div id="spotify">
+         <iframe data-testid="embed-iframe" style="border-radius:12px" src={project.spotify.replace(/^"|"$/g, '')} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>    
     <div id="inner">
         <div id="glitchbox">
          <h1>{project.titel_album}</h1>
          <p>{project.titel_album}</p>
          <p>{project.titel_album}</p>
-         <p>{project.titel_album}</p>
         </div>
         <h5>{project.artist}</h5>
-        <h6>{project.year}</h6>
+        <h6>Album · {project.year}</h6>
         <div id="details">
             <div id="genre">
                 <h6>Genre:</h6>
                 <p class="cap2">{project.genre.join(', ')}</p>
             </div>
             <div id="about">
-                <h6>About</h6>
+                <h6>[About the album]</h6>
                 <div id="aboutlists">
                     <div id="list1">
                         <p class="cap2">Producer</p>
@@ -85,25 +86,48 @@ const related = allAlbums
 </section>
 <section id="bottomsection">
 <div id="samegenre">
-    <a href="/">{project.genre[0]}</a>
-    <h2>Same genre</h2>
+    <a class="ctal" href="/">{project.genre[0]}</a>
+    <h3>Same genre</h2>
+</div>
+<div id="container">
     {related.map((project) => <ListCard {project} />)}
 </div>
+
 </section>
 </ArtistLayout>
 
 <style>
-   body {
-        background-color: var(--dark4);
+   html {
+    height: 100%;
+  }
+  
+  body {
+    background-image: var(--gradient-dark);
+    background-attachment: fixed;
+    min-height: 100%;
+  }
+
+  section {
+    width: 96vw;;
+    margin: 0 auto;
+  }
+
+    #spotifywrapper img {
+        max-width: 650px;
+        margin: 0 auto;
     }
 
-    img {
-        width: 300px;
+    #spotify {
+        /* max-width: 650px; */
+        margin: 0 auto;
     }
+    
     #glitchbox {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
+        margin-top: 32px;
+        margin-bottom: 16px;
     }
 
     #glitchbox h1, #glitchbox p{
@@ -119,32 +143,42 @@ const related = allAlbums
     }
 
     #glitchbox h1:nth-child(1) {
-        color: var(--secondary);
-        filter: blur(2px);
-        padding-left: 1px;
+        color: #f00;
+        filter: blur(1.5px);
+        mix-blend-mode: lighten;
     }
 
     #glitchbox p:nth-child(2) {
         color: #00fd00;
-        mix-blend-mode: screen;
-        filter: blur(4px);
-        padding-left: 1.5px;
+        mix-blend-mode: lighten;
+        filter: blur(1.5px);
+        padding-left: 3px;
     }
 
     #glitchbox p:nth-child(3) {
-        color: #f00;
-        filter: blur(2px);
+        color: #0000ff;
+        filter: blur(1.5px);
+        mix-blend-mode: lighten;
+        padding-left: 6px;
     }
 
-    #glitchbox p:nth-child(4) {
-        color: #0000f8;
-        filter: blur(2px);
-        padding-left: 5.2px;
+    #inner h6, #inner h5 {
+        color: var(--contrast);
+    }
+
+    h5 {
+        margin-bottom: 2px;
+    }
+
+    #about h6, #genre h6 {
+        margin-bottom: 4px;
     }
 
     #details {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        margin-top: 24px;
+        margin-bottom: 16px;
     }
 
     #aboutlists {
@@ -155,22 +189,96 @@ const related = allAlbums
     #samegenre {
         display: flex;
         justify-content: end;
+        align-items: end;
+        margin-bottom: 8px;
     }
+
+    #samegenre h3 {
+        text-transform: uppercase;
+        margin-left: 16px;
+    }
+
+    #samegenre a {
+        border: solid 1px var(--secondary);
+        padding: 3px 6px 3px 18px;
+        border-top-left-radius: 75px;
+        min-width: 70px;
+        text-align: right;
+        color: var(--secondary);
+        text-decoration: none;
+        height: fit-content;
+    }
+
+    #samegenre a:hover {
+        border-color: var(--contrast);
+        color: var(--contrast);
+    }
+
+    #topsection {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: solid 0.5px var(--secondary);
+   }
 
     @media (min-width: 850px) {
     
         #outer {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: 1fr auto;
         }
 
         #inner {
             order: -1;
+            margin-right: 16px;
+        }
+
+        #glitchbox {
+            margin-top: 0;
         }
 
         #details {
             width: fit-content;
             place-self: end end;
+        }
+
+        #genre {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #genre p {
+            color: var(--contrast);
+            padding-right: 32px;
+        }
+
+         #samegenre a {
+        padding: 12px 24px 12px 32px;
+        border-top-left-radius: 50px;
+        min-width: 100px;
+        text-align: center;
+        margin-bottom: 14px;
+        }
+
+        #spotify {
+            grid-column: -3/-1;
+            grid-row: 2/3;
+            margin: 0 0 32px 0;
+        }
+
+        #spotifywrapper {
+            max-width: 100%;
+        }
+
+        #topsection {
+            border: none;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2vw;
+            margin-bottom: 40px;
         }
    }
 </style>

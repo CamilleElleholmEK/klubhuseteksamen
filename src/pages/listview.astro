@@ -16,15 +16,25 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 ---
 
 <ArtistLayout>
-  <section>
-    <h1>Artister</h1>
+  <section class="topsection">
+    <div id="glitchbox">
+         <h1>Artists</h1>
+         <p>Artists</p>
+         <p>Artists</p>
+         
+        </div>
     <div class="filterbar">
       <div>
-      <button class="filter-toggle" data-target="producer">Producer</button>
-      <button class="filter-toggle" data-target="genre">Genre</button>
+      <button class="filter-toggle" data-target="producer">Producer <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8" fill="none">
+  <path d="M14.2656 1.82107C14.7125 1.46852 14.4632 0.75 13.894 0.75L1.35263 0.75C0.78341 0.75 0.534117 1.46852 0.98102 1.82107L7.25168 6.76779C7.4696 6.9397 7.77698 6.9397 7.9949 6.76779L14.2656 1.82107Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></button>
+      <button class="filter-toggle" data-target="genre">Genre <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8" fill="none">
+  <path d="M14.2656 1.82107C14.7125 1.46852 14.4632 0.75 13.894 0.75L1.35263 0.75C0.78341 0.75 0.534117 1.46852 0.98102 1.82107L7.25168 6.76779C7.4696 6.9397 7.77698 6.9397 7.9949 6.76779L14.2656 1.82107Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></button>
       </div> 
-      <button id="clear-all" data-target="clear">Clear all filters</button>
-      <button class="filter-toggle" data-target="sort">Sort by</button>
+      <button id="sort" class="filter-toggle" data-target="sort">Sort by <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8" fill="none">
+  <path d="M14.2656 1.82107C14.7125 1.46852 14.4632 0.75 13.894 0.75L1.35263 0.75C0.78341 0.75 0.534117 1.46852 0.98102 1.82107L7.25168 6.76779C7.4696 6.9397 7.77698 6.9397 7.9949 6.76779L14.2656 1.82107Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></button>
     </div>
     <div id="filter-panel">
       <div class="filter-content" data-panel="producer" hidden>
@@ -76,7 +86,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     </div>
   </section>
   <section id="projectsection">
-    <p>pagination goes here</p>
+    <!-- <p>pagination goes here</p> -->
     <div class="projectcontainer"> 
       {data.map((project) => <ListCard {project}/> )}
     </div>
@@ -84,28 +94,138 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 </ArtistLayout>
 
 <style>
+  html {
+    height: 100%;
+  }
+  
   body {
     background-image: var(--gradient-dark);
-    background-size: 100%;
+    background-attachment: fixed;
+    min-height: 100%;
   }
 
-   .projectcontainer {
-    width: 90vw;
-    margin: 0 auto;
+   section {
+    margin: 0px 5vw 0px 5vw;
    }
+
+   .topsection {
+    margin-top: 40px;
+    margin-bottom: 20px;
+   }
+
+   #glitchbox {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    #glitchbox h1, #glitchbox p{
+        font-family: var(--gopher);
+        font-size: var(--h1-size);
+        font-weight: var(--bold);
+        line-height: 85px;
+        mix-blend-mode: screen;
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+
+    #glitchbox h1:nth-child(1) {
+        color: #f00;
+        filter: blur(1.5px);
+        mix-blend-mode: lighten;
+    }
+
+    #glitchbox p:nth-child(2) {
+        color: #00fd00;
+        mix-blend-mode: screen;
+        filter: blur(4px);
+        padding-left: 3px;
+    }
+
+    #glitchbox p:nth-child(3) {
+        color: #0000ff;
+        filter: blur(1.5px);
+        mix-blend-mode: lighten;
+        padding-left: 6px;
+    }
+
 
    button {
     background-color: transparent;
     font-family: var(--stolzl);
     color: var(--secondary);
-    padding: 3px 18px 3px 6px;
+    border: none;
+   }
+
+   #sort, .filter-btn, .sort-btn {
     border: solid 1px var(--secondary);
+   }
+
+   .filter-btn, .sort-btn {
+    padding: 3px 18px 3px 6px;
     border-top-right-radius: 75px;
+   }
+
+   #sort {
+    padding: 3px 6px 3px 18px;
+    border-top-left-radius: 75px;
+   }
+
+   #sort svg {
+    margin-left: 12vw;
    }
 
    .active {
     background-color: var(--contrast);
     border: solid 1px var(--contrast);
+    stroke: var(--contrast);
+   }
+
+   svg {
+    stroke: var(--secondary);
+   }
+
+   .activebtn svg {
+    stroke: var(--contrast);
+   }
+
+   .activebtn {
+    color: var(--contrast);
+   }
+
+   #sort.activebtn {
+    border-color: var(--contrast) !important;
+   }
+
+   .filterbar {
+    border-bottom: solid 0.5px var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0px;
+    margin: 20px 0px 8px 0px;
+   }
+
+   .filterbar div button {
+    padding: 3px 6px 3px 0px;
+   }
+
+   .filterbar div button:nth-child(2) {
+    border-right: solid 1px var(--secondary);
+    border-left: solid 1px var(--secondary);
+    padding-left: 6px;
+   }
+
+   /* .filter-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   } */
+
+   .filter-btn {
+    margin: 2px;
+   }
+
+   .projectcontainer {
+    margin-bottom: 40px;
    }
 
    @media (min-width: 850px) {
@@ -122,6 +242,12 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     .project {
       padding: 16px;
     }
+
+    #glitchbox h1, #glitchbox p{
+       font-size: var(--h1-size-desk);
+       line-height: 200px;
+       font-weight: var(--medium);
+    }
    }
 </style>
 
@@ -131,7 +257,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
   // Viser og skjuler filtreringspaneler
   const toggles = document.querySelectorAll<HTMLElement>(".filter-toggle");
   const panels = document.querySelectorAll<HTMLElement>(".filter-content");
-  // const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  const svg = document.querySelectorAll<HTMLElement>(".svg")
   
 
   toggles.forEach(toggle => {
@@ -143,10 +269,10 @@ const data = await fetch(endpoint, options).then((response) => response.json());
       if (p.dataset.panel !== target) p.hidden = true;
     });
     // Fjern active fra andre toggles
-    toggles.forEach(t => { if (t !== toggle) t.classList.remove("active") });
+    toggles.forEach(t => { if (t !== toggle) t.classList.remove("activebtn") });
 
     targetPanel.hidden = !targetPanel.hidden;
-    toggle.classList.toggle("active", !targetPanel.hidden);
+    toggle.classList.toggle("activebtn", !targetPanel.hidden);
   });
 });
 
