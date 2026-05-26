@@ -6,11 +6,112 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
 ---
 
 <ProducerLayout>
+<section>
+    <div class="imgh1">
+    <div class="imgwrap">
+        <img src="/imgs/sliceTopRight.svg" alt="">
+    </div>
+    <h1>Mads</h1>
+    </div>
+    
+    <h1>Mølgaard</h1>
+    <p>microcopy her</p>
+    <div class="textgraphic">
+    <img src="/imgs/sliceBtmLeft.svg" alt="Graphic element">
+    <p>[Mix & Mastering Engineer]</p>
+    </div>
+    <p>I’m Mads.</p>
+    <p>Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</p>
+    <p>microcopy her</p>
+</section>
+<section>
+    <p>microcopy her</p>
+    <h2>Selected works</h2>
+    <div>
+        <button class="accordion">Titel 1</button>
+        <div class="panel">
+            <img src="/imgs/huslogo.svg" alt="">
+            <div>
+            <p>master stuff</p>
+            <p>navn eller noget her</p>
+            </div>
+            <p>Lorem ipsum...</p>
+        </div>
 
+        <button class="accordion">Titel 2</button>
+        <div class="panel">
+            <img src="/imgs/huslogo.svg" alt="">
+            <div>
+            <p>master stuff</p>
+            <p>navn eller noget her</p>
+            </div>
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button class="accordion">Titel 3</button>
+        <div class="panel">
+            <img src="/imgs/huslogo.svg" alt="">
+            <div>
+            <p>master stuff</p>
+            <p>navn eller noget her</p>
+            </div>
+            <p>Lorem ipsum...</p>
+        </div>
+    </div>
+</section>
 
 
 </ProducerLayout>
 
 <style>
+ html {
+    height: 100%;
+  }
+  
+  body {
+    background-image: var(--gradient-dark);
+    background-attachment: fixed;
+    min-height: 100%;
+  }
 
+.imgwrap {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.textgraphic {
+    display: flex;
+}
+
+.textgraphic img {
+  width: 12px;
+  height: 11px;
+  margin-right: 12px;
+}
+
+.accordion {
+  background-color: transparent;
+  border-top: solid 1px var(--secondary);
+  border-bottom: solid 1px var(--secondary);
+  color: var(--secondary);
+  cursor: pointer;
+  padding: 16px 0px;
+  width: 100%;
+  text-align: left;
+  transition: 0.4s;
+  font-size: var(--h5-size);
+  font-weight: var(--book);
+  line-height: 31px;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: transparent;
+  display: none;
+  overflow: hidden;
+}
+
+.panel img {
+    width: 50vw;
+}
 </style>
