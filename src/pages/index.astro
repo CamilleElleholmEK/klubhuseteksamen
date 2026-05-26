@@ -9,7 +9,7 @@ import Layout from "../layouts/Layout.astro";
   <section class="hero_section">
     <div id="klubhuset-anim"></div>
     <video autoplay muted loop playsinline>
-      <source src="/vids/klubhuset_b_roll.webm" type="video/webm" />
+      <source src="/vids/b-roll.webm" type="video/webm" />
     </video>
     <div class="hero-klubhuset">
       <div class="herotekst">
@@ -145,8 +145,8 @@ import Layout from "../layouts/Layout.astro";
 
   /* LOTTIE ANIMATION */
   #klubhuset-anim {
-    --lottie-x: -250px;
-    --lottie-y: 300px;
+    --lottie-x: -270px;
+    --lottie-y: 310px;
     --lottie-scale: 1.4;
     position: absolute;
     inset: 0;
@@ -324,12 +324,31 @@ import Layout from "../layouts/Layout.astro";
 <script is:inline src="/lottie.js"></script>
 <script is:inline>
   window.addEventListener("DOMContentLoaded", () => {
-    window.lottie?.loadAnimation({
-      container: document.getElementById("klubhuset-anim"),
+    const container = document.getElementById("klubhuset-anim");
+
+    const animation = window.lottie?.loadAnimation({
+      container,
       renderer: "svg",
-      loop: true,
-      autoplay: true,
+      loop: false,
+      autoplay: false,
       path: "/data.json",
     });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animation?.goToAndPlay(0, true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.35,
+      },
+    );
+
+    if (container) observer.observe(container);
   });
 </script>
