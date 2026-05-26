@@ -6,7 +6,7 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
 ---
 
 <ProducerLayout>
-<section>
+<section id="section1">
     <div class="imgh1">
     <div class="imgwrap">
         <img src="/imgs/sliceTopRight.svg" alt="">
@@ -15,51 +15,80 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     </div>
     
     <h1>Mølgaard</h1>
-    <p>microcopy her</p>
+    <p class="micro">microcopy her</p>
     <div class="textgraphic">
     <img src="/imgs/sliceBtmLeft.svg" alt="Graphic element">
     <p>[Mix & Mastering Engineer]</p>
     </div>
     <p>I’m Mads.</p>
     <p>Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</p>
-    <p>microcopy her</p>
+    <p class="micro">microcopy her</p>
 </section>
-<section>
-    <p>microcopy her</p>
+<section id="section2">
+    <div id="section2_1">
+    <p class="micro">microcopy her</p>
     <h2>Selected works</h2>
-    <div>
-        <button class="accordion">Titel 1</button>
-        <div class="panel">
-            <img src="/imgs/huslogo.svg" alt="">
-            <div>
-            <p>master stuff</p>
-            <p>navn eller noget her</p>
-            </div>
-            <p>Lorem ipsum...</p>
-        </div>
-
-        <button class="accordion">Titel 2</button>
-        <div class="panel">
-            <img src="/imgs/huslogo.svg" alt="">
-            <div>
-            <p>master stuff</p>
-            <p>navn eller noget her</p>
-            </div>
-            <p>Lorem ipsum...</p>
-        </div>
-
-        <button class="accordion">Titel 3</button>
-        <div class="panel">
-            <img src="/imgs/huslogo.svg" alt="">
-            <div>
-            <p>master stuff</p>
-            <p>navn eller noget her</p>
-            </div>
-            <p>Lorem ipsum...</p>
-        </div>
     </div>
+    <div id="section2_2">
+        <p class="micro">microcopy her</p>
+     <!-- Olli indsæt billeder ved siden af accordion her -->
+      <div class="collage">
+        <img src="" alt="">
+        <img src="" alt="">
+      </div>
+      <div class="accordionwrap">
+        <button data-target="accordion1" class="accordion">The Blue Van</button>
+        <div data-panel="accordion1" class="panel" hidden>
+            <div class="accordiontitle">
+            <p>[Roles]</p>
+            <p>Producer & Engineer</p>
+            </div>
+            <div class="accordiontext">
+            <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
+            <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
+            <a href="/">Read more</a>
+            </div>
+        </div>
+
+        <button data-target="accordion2" class="accordion">Calby</button>
+        <div data-panel="accordion2" class="panel" hidden>
+            <div class="accordiontitle">
+            <p>[Roles]</p>
+            <p>Producer & Engineer</p>
+            </div>
+            <div class="accordiontext">
+            <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
+            <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
+            <a href="/">Read more</a>
+            </div>
+        </div>
+
+        <button data-target="accordion3" class="accordion">MØ</button>
+        <div data-panel="accordion3" class="panel" hidden>
+            <div class="accordiontitle">
+            <p>[Roles]</p>
+            <p>Producer & Engineer</p>
+            </div>
+            <div class="accordiontext">
+            <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
+            <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
+            <a href="/">Read more</a>
+            </div>
+      </div>
+    </div>
+    <p class="micro">microcopy her</p>
 </section>
 
+<section id="section3">
+    <p class="micro">microcopy her</p>
+    <h2>My approach</h2>
+    <p >__My approach to production is centered around emotion, energy, and atmosphere. 
+I’m less interested in perfection and more interested in capturing something that feels alive and honest. 
+I love working with texture, movement, and imperfections — the details that give a record personality and make it feel human. </p>
+    <p>Whether the process is loud and chaotic or stripped back and intimate, I always focus on creating an environment where ideas can happen naturally and where the emotion of the music stays at the center__</p>
+    <a href="/">See my work</a>
+    <p>video her</p>
+</section>
 
 </ProducerLayout>
 
@@ -74,13 +103,33 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     min-height: 100%;
   }
 
+  .micro {
+    display: none;
+  }
+
+  section {
+    width: 98vw;
+    margin: 0 auto;
+  }
+
+  #section1 p:nth-child(2) {
+    color: var(--contrast);
+  }
+
+  #section1 h1:nth-child(1) {
+    margin-bottom: 64px;
+  }
+
 .imgwrap {
     width: 90vw;
     margin: 0 auto;
+    margin-bottom: 64px;
 }
 
 .textgraphic {
     display: flex;
+    margin-top: 64px;
+    margin-bottom: 16px;
 }
 
 .textgraphic img {
@@ -91,27 +140,109 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
 
 .accordion {
   background-color: transparent;
+  border: none;
   border-top: solid 1px var(--secondary);
-  border-bottom: solid 1px var(--secondary);
   color: var(--secondary);
   cursor: pointer;
   padding: 16px 0px;
   width: 100%;
   text-align: left;
-  transition: 0.4s;
   font-size: var(--h5-size);
   font-weight: var(--book);
   line-height: 31px;
+  /* Fjerner den browser specifikke blå farve ved klik */
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  outline: none;
+}
+
+.accordion:hover {
+    color: var(--contrast);
+}
+
+.accordionwrap {
+    border-bottom: solid 1px var(--secondary);
 }
 
 .panel {
   padding: 0 18px;
   background-color: transparent;
-  display: none;
-  overflow: hidden;
+  
 }
 
-.panel img {
-    width: 50vw;
+.panel a, #section3 a {
+    background-color: transparent;
+    font-family: var(--stolzl);
+    color: var(--secondary);
+    border: solid 1px var(--secondary);
+    padding: 3px 18px 3px 6px;
+    border-top-right-radius: 75px;
+    text-decoration: none;
+    margin-bottom: 32px;
+    display: inline-block;
 }
+
+.accordiontitle {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.accordiontitle p:nth-child(1) {
+    margin-right: 50px;
+    color: var(--contrast);
+}
+
+.accordiontext p,  {
+    max-width: 40ch;
+    margin-bottom: 16px;
+}
+
+#section3 p {
+    max-width: 50ch;
+    margin-top: 16px;
+}
+
+#section3 a {
+    margin-top: 16px;
+}
+
+/* Olli style billeder ved siden af accordion her */
+.collage {
+
+}
+/* Og her */
+.collage img {
+
+}
+
+.activebtn {
+    color: var(--contrast);
+    border-bottom: none;
+}
+
+
 </style>
+
+<script>
+    // @ts-nocheck
+  const toggles = document.querySelectorAll<HTMLElement>(".accordion");
+  const panels = document.querySelectorAll<HTMLElement>(".panel");
+
+    // Viser og skjuler accordionpaneler
+    toggles.forEach(toggle => {
+    toggle.addEventListener("click", () => {
+    const target = toggle.dataset.target;
+    const targetPanel = [...panels].find(p => p.dataset.panel === target);
+
+    panels.forEach(p => {
+      if (p.dataset.panel !== target) p.hidden = true;
+    });
+    // Fjern active fra andre toggles
+    toggles.forEach(t => { if (t !== toggle) t.classList.remove("activebtn") });
+
+    targetPanel.hidden = !targetPanel.hidden;
+    toggle.classList.toggle("activebtn", !targetPanel.hidden);
+   });
+   });
+</script>
