@@ -55,7 +55,8 @@ h5 {
 p {
   font-size: var(--body1-size);
   font-weight: var(--book);
-  line-height: 15px;
+  line-height: 18px;
+  text-transform: uppercase;
 }
 
 /* Classes for text styling */
