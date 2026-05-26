@@ -1,288 +1,317 @@
 ---
-import "../css/custom.css"
-import "../css/general.css"
+import "../css/custom.css";
+import "../css/general.css";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="robots" content="noindex" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex" />
 
-		<!-- Fonts -->
-		 <link rel="stylesheet" href="https://use.typekit.net/ktm7xhc.css">
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<header>
-			<div class="logo">
-            <a id="logolink" href="/">
-                <img src="/imgs/huslogo.svg" alt="Logo">
-                <img src="/imgs/logo-outline.svg" alt="Logo outline">
-            </a>
-        </div>
-        <nav>
-            <ul class="menu">
-                <li><a href="/mads">Producers,</a></li>
-                <li><a href="/listview">Artists,</a></li>
-                <li><a href="/">Contact</a></li>
-            </ul>
-            <button class="burger">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </button>
-        </nav>
-		</header>
-		<slot />
-		<footer>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/ktm7xhc.css" />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <div id="grain-overlay"></div>
+    <header>
+      <div class="logo">
+        <a id="logolink" href="/">
+          <img src="/imgs/huslogo.svg" alt="Logo" />
+          <img src="/imgs/logo-outline.svg" alt="Logo outline" />
+        </a>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="/mads">Producers,</a></li>
+          <li><a href="/listview">Artists,</a></li>
+          <li><a href="/">Contact</a></li>
+        </ul>
+        <button class="burger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </button>
+      </nav>
+    </header>
+    <slot />
+    <footer>
       <div id="line1">
-        <img src="/imgs/sliceBtmLeft.svg" alt="Graphic element">
-			<p>Let's connect on <a href="/">Instagram</a>, write us an <a href="/">email</a>, or call us at <a href="/">+45 12 34 56 78</a></p>
-			</div>
+        <img src="/imgs/sliceBtmLeft.svg" alt="Graphic element" />
+        <p>
+          Let's connect on <a href="/">Instagram</a>, write us an <a href="/"
+            >email</a
+          >, or call us at <a href="/">+45 12 34 56 78</a>
+        </p>
+      </div>
       <div id="glitchbox">
-      <h2>Klubhuset©</h2>
-      <p>Klubhuset©</p>
-      <p>Klubhuset©</p>
+        <h2>Klubhuset©</h2>
+        <p>Klubhuset©</p>
+        <p>Klubhuset©</p>
       </div>
       <div id="line2">
-			<p>[Dortheavej 4, 2400 KBH NV] CVR: 4768486347863</p>
-      <img src="/imgs/sliceTopRight.svg" alt="Graphic element">
+        <p>[Dortheavej 4, 2400 KBH NV] CVR: 4768486347863</p>
+        <img src="/imgs/sliceTopRight.svg" alt="Graphic element" />
       </div>
-		</footer>
-	</body>
+    </footer>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-	header {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  padding: 10px;
-  background-color: var(--dark4);
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-}
-.logo img {
-  width: auto;
-  height: 40px;
-}
-#logolink {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-}
-#logolink img {
-  grid-row: 1/2;
-  grid-column: 1/2;
-}
-#logolink img:nth-child(1) {
-  opacity: 100%;
-  transition: opacity 0.2s;
-}
-#logolink:hover img:nth-child(1) {
-  z-index: 5;
-  opacity: 0%;
-}
-nav {
-  display: flex;
-  align-items: start;
-  margin-left: 5px;
-}
-.menu {
-  display: none; 
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-.menu li:last-child {
-  margin-right: 0;
-}
-.menu a {
-  display: block;
-  padding: 0px;
-  color: transparent;
-  -webkit-text-stroke: 0.5px var(--secondary);
-  text-decoration: none;
-  transition: color 0.2s;
-  text-align: end;
-  font-size: 2.25rem;
-  text-transform: uppercase;
-}
+  /* GRAIN OVERLAY */
 
-.menu a:hover {
-  color: var(--secondary);
-}
+  #grain-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+  }
 
-.menu .activenav {
-    color: var(--secondary);
-}
-
-.menu .activenav:hover {
-    color: transparent;
-}
-
-.burger {
-  display: block; 
-  width: 30px;
-  height: 20px;
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-}
-.burger .line {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: var(--secondary);
-  margin-bottom: 5px;
-  transition: 0.2s linear;
-}
-
-.burger.active .line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.burger.active .line:nth-child(2) {
-  opacity: 0;
-  transition: 0.15s linear;
-}
-.burger.active .line:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-nav.active .menu {
-  display: block;
-  background-color: var(--dark4);
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-}
-
-nav.active .menu li { margin: 10px 20px; }
-nav.active .menu a { font-size: 24px; }
-
-footer p{
-	text-transform: uppercase;
-	color: var(--secondary);
-}
-
-footer a{
-	color: var(--secondary);
-}
-
-footer {
-	background-image: url(../../public/imgs/footergraphiccut.svg);
-	background-repeat: no-repeat;
-	background-position: bottom left;
-	overflow: visible;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
-#glitchbox {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-    }
-
-#glitchbox h2, #glitchbox p{
-        font-size: var(--h2-size);
-        font-weight: var(--bold);
-        line-height: 80px;
-        mix-blend-mode: screen;
-        grid-row: 1/2;
-        grid-column: 1/2;
-        text-transform: none;
-    }
-
-#glitchbox h2:nth-child(1) {
-        color: #f00;
-        filter: blur(1.5px);
-        mix-blend-mode: lighten;
-    }
-
-    #glitchbox p:nth-child(2) {
-        color: #00fd00;
-        mix-blend-mode: lighten;
-        filter: blur(1.5px);
-        padding-left: 3px;
-    }
-
-    #glitchbox p:nth-child(3) {
-        color: #0000ff;
-        filter: blur(1.5px);
-        mix-blend-mode: lighten;
-        padding-left: 6px;
-    }
-
-
-
-#line1 {
-  width: 40ch;
-  margin-bottom: 8px;
-  line-height: 18px;
-  display: flex;
-  align-items: end;
-}
-
-#line1 img {
-  width: 12px;
-  margin-right: 12px;
-}
-
-#line2{
-  width: 23ch;
-  margin-top: 8px;
-  text-align: right;
-  margin-left: auto;
-  line-height: 18px;
-  display: flex;
-  align-items: end;
-}
-
-#line2 img {
-  width: 12px;
-  margin-left: 12px;
-}
-@media screen and (min-width: 850px) {
   header {
-    justify-content: left;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--dark4);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  .logo img {
+    width: auto;
+    height: 40px;
+  }
+  #logolink {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  #logolink img {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  #logolink img:nth-child(1) {
+    opacity: 100%;
+    transition: opacity 0.2s;
+  }
+  #logolink:hover img:nth-child(1) {
+    z-index: 5;
+    opacity: 0%;
+  }
+  nav {
+    display: flex;
+    align-items: start;
+    margin-left: 5px;
   }
   .menu {
-    display: flex; 
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
+
+  .menu li:last-child {
+    margin-right: 0;
+  }
+  .menu a {
+    display: block;
+    padding: 0px;
+    color: transparent;
+    -webkit-text-stroke: 0.5px var(--secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    text-align: end;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+  }
+
+  .menu a:hover {
+    color: var(--secondary);
+  }
+
+  .menu .activenav {
+    color: var(--secondary);
+  }
+
+  .menu .activenav:hover {
+    color: transparent;
+  }
+
   .burger {
-    display: none; 
+    display: block;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
   }
-}
+  .burger .line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary);
+    margin-bottom: 5px;
+    transition: 0.2s linear;
+  }
 
+  .burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .burger.active .line:nth-child(2) {
+    opacity: 0;
+    transition: 0.15s linear;
+  }
+  .burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 
+  nav.active .menu {
+    display: block;
+    background-color: var(--dark4);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  nav.active .menu li {
+    margin: 10px 20px;
+  }
+  nav.active .menu a {
+    font-size: 24px;
+  }
+
+  footer p {
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+
+  footer a {
+    color: var(--secondary);
+  }
+
+  footer {
+    background-image: url(../../public/imgs/footergraphiccut.svg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  #glitchbox {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  #glitchbox h2,
+  #glitchbox p {
+    font-size: var(--h2-size);
+    font-weight: var(--bold);
+    line-height: 80px;
+    mix-blend-mode: screen;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    text-transform: none;
+  }
+
+  #glitchbox h2:nth-child(1) {
+    color: #f00;
+    filter: blur(1.5px);
+    mix-blend-mode: lighten;
+  }
+
+  #glitchbox p:nth-child(2) {
+    color: #00fd00;
+    mix-blend-mode: lighten;
+    filter: blur(1.5px);
+    padding-left: 3px;
+  }
+
+  #glitchbox p:nth-child(3) {
+    color: #0000ff;
+    filter: blur(1.5px);
+    mix-blend-mode: lighten;
+    padding-left: 6px;
+  }
+
+  #line1 {
+    width: 40ch;
+    margin-bottom: 8px;
+    line-height: 18px;
+    display: flex;
+    align-items: end;
+  }
+
+  #line1 img {
+    width: 12px;
+    margin-right: 12px;
+  }
+
+  #line2 {
+    width: 23ch;
+    margin-top: 8px;
+    text-align: right;
+    margin-left: auto;
+    line-height: 18px;
+    display: flex;
+    align-items: end;
+  }
+
+  #line2 img {
+    width: 12px;
+    margin-left: 12px;
+  }
+  @media screen and (min-width: 850px) {
+    header {
+      justify-content: left;
+    }
+    .menu {
+      display: flex;
+    }
+    .burger {
+      display: none;
+    }
+  }
 </style>
 
 <script>
-    // @ts-nocheck
-	const burger = document.querySelector(".burger");
-const nav = document.querySelector("nav");
-burger.addEventListener("click", burgerClick);
-function burgerClick() {
-  burger.classList.toggle("active");
-  nav.classList.toggle("active");
-}
+  // @ts-nocheck
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector("nav");
+  burger.addEventListener("click", burgerClick);
+  function burgerClick() {
+    burger.classList.toggle("active");
+    nav.classList.toggle("active");
+  }
+</script>
+<script is:inline src="/grained.min.js"></script>
+<script is:inline>
+  grained("#grain-overlay", {
+    animate: true,
+    patternWidth: 100,
+    patternHeight: 100,
+    grainOpacity: 0.08,
+    grainDensity: 1,
+  });
 </script>
