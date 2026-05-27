@@ -1,0 +1,184 @@
+---
+const {
+  producerNumber,
+  topThreeAlbum1,
+  topThreeAlbum2,
+  topThreeAlbum3,
+  producerImage,
+  producerRole,
+  producerName,
+  producerDescription,
+  autograph,
+} = Astro.props;
+---
+
+<div class="card-body">
+  <div class="card-content-container">
+    <p class="producer-number">{producerNumber}</p>
+
+    <img class="top-three-album-1" src={topThreeAlbum1} alt="album1" />
+    <img class="top-three-album-2" src={topThreeAlbum2} alt="album2" />
+    <img class="top-three-album-3" src={topThreeAlbum3} alt="album3" />
+
+    <div class="producer-image-container">
+      <a href="/mads">
+        <img
+          class="producer-image"
+          src={producerImage}
+          alt="image of producer"
+        />
+        <div class="producer-image-overlay">View producer</div>
+      </a>
+    </div>
+    <div class="producer-information-container">
+      <div class="producer-name-and-role-container">
+        <p class="producer-role">{producerRole}</p>
+        <h5 class="producer-name">{producerName}</h5>
+      </div>
+      <p class="producer-description">
+        {producerDescription}
+      </p>
+    </div>
+
+    <img class="autograph" src={autograph} alt="autograf" />
+  </div>
+</div>
+
+<style>
+  /* styling content of card */
+
+  .card-body {
+    box-sizing: border-box;
+    min-height: var(--cardHeight);
+    height: auto;
+    border-top: 0.5px solid white;
+    border-bottom: 0.5px solid white;
+    margin: 10px 0;
+    padding: 10px;
+    background: linear-gradient(140deg, #090401 0%, #170f08 90%);
+  }
+
+  /* placing content of card */
+
+  .card-content-container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+  }
+
+  .top-three-album-1,
+  .top-three-album-2,
+  .top-three-album-3 {
+    aspect-ratio: 1 / 1;
+  }
+
+  .top-three-album-1,
+  .top-three-album-2,
+  .top-three-album-3,
+  .producer-image-container,
+  .producer-information-container {
+    min-width: 0;
+  }
+
+  .producer-number {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    color: white;
+  }
+
+  .top-three-album-1 {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    align-self: start;
+  }
+
+  .top-three-album-2 {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    align-self: center;
+  }
+
+  .top-three-album-3 {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    align-self: end;
+  }
+
+  .top-three-album-1,
+  .top-three-album-2,
+  .top-three-album-3,
+  .autograph {
+    width: 100%;
+    display: block;
+  }
+
+  .producer-image-container {
+    display: grid;
+    grid-column: 4 / 9;
+    grid-row: 1 / 4;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .producer-image-container a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .producer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+
+  .producer-image-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(9, 4, 1, 0.45);
+    color: var(--secondary);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .producer-image-container:hover .producer-image {
+    transform: scale(1.2);
+  }
+
+  .producer-image-container:hover .producer-image-overlay {
+    opacity: 1;
+  }
+
+  .producer-information-container {
+    display: grid;
+    grid-column: 9 / 12;
+    grid-row: 1 / 4;
+    color: white;
+  }
+
+  .producer-information-container > * {
+    margin: 0;
+  }
+
+  .producer-description {
+    align-self: end;
+  }
+
+  .autograph {
+    display: grid;
+    grid-column: 12/13;
+    grid-row: 1 / 2;
+  }
+</style>
