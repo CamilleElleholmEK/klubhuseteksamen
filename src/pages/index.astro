@@ -2,6 +2,7 @@
 import "../css/custom.css";
 import "../css/general.css";
 import Layout from "../layouts/Layout.astro";
+import IndexCard from "../components/IndexCard.astro";
 ---
 
 <!-- import ProducerCard/IndexCard, hvor end du laver componenten og ryk denne op i fench<33 from '../components/ProducerCard.astro'; -->
@@ -15,18 +16,15 @@ import Layout from "../layouts/Layout.astro";
       <div class="herotekst">
         <h5>Music studio</h5>
         <p>Copenhagen</p>
-        <button id="see-work-btn" class="ctal">See our work</button>
+        <a id="see-work-btn" class="ctal" href="/listview">See our work</a>
       </div>
     </div>
   </section>
 
-  <section class="grid_2-6">
+  <section>
     <div class="what_we_do">
-      <div id="glitchbox">
-        <h2>WHAT WE DO</h2>
-        <p>WHAT WE DO</p>
-        <p>WHAT WE DO</p>
-      </div>
+      <h3>WHAT WE DO</h3>
+
       <p>
         We are a team of producers and musicians inspired by the warmth,
         character, and unpredictability of analog recording. Using old-school
@@ -38,66 +36,82 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <div class="wwd_img">
-      <img
-        id="wwd_img_1"
-        src="/"
-        alt="Placeholder image"
-        style="border-color: red; border-width: 2px; border-style: solid"
-      />
-      <img
-        id="wwd_img_2"
-        src="/"
-        alt="Placeholder image"
-        style="border-color: red; border-width: 2px; border-style: solid"
-      />
-    </div>
-
-    <div class="wwd_grafik">
-      <img
-        id="wwd_grafik_1"
-        src="/"
-        alt="Placeholder image"
-        style="
-              border-color: turquoise;
-              border-width: 2px;
-              border-style: solid;
-            "
-      />
-      <img
-        id="wwd_grafik_2"
-        src="/"
-        alt="Placeholder image"
-        style="
-              border-color: turquoise;
-              border-width: 2px;
-              border-style: solid;
-            "
-      />
+      <div class="wwd_img_frame wwd_img_frame_1">
+        <img id="wwd_img_1" src="imgs/orgel.webp" alt="person playing organ" />
+      </div>
+      <div class="wwd_img_frame wwd_img_frame_2">
+        <img id="wwd_img_2" src="imgs/Joakim.webp" alt="Joakim" />
+      </div>
     </div>
   </section>
 
   <!-- Indsæt selv producer-card-component når du har den, men lad glitch-klassen stå, så h2 situationen ikke ryger :o) -->
   <section class="producer_card_view">
     <div class="who_we_are">
-      <div id="glitchbox">
-        <h2>WHO WE ARE</h2>
-        <p>WHO WE ARE</p>
-        <p>WHO WE ARE</p>
-      </div>
+      <h3>WHO WE ARE</h3>
     </div>
-    <!-- Indsæt selv producer-card-component når du har den, men lad glitch-klassen stå, så h2 situationen ikke ryger :o) -->
-    <component>Producer 1</component>
-    <component>Producer 2</component>
-    <component>Producer 3</component>
-    <component>Producer 4</component>
+
+    <div class="container">
+      <ul id="cards">
+        <li class="card" id="card1">
+          <IndexCard
+            producerNumber="#01"
+            topThreeAlbum1="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
+            producerImage="imgs/mads.webp"
+            producerRole="[producer, mix and master engineer]"
+            producerName="Mads Mølgaard"
+            producerDescription="I'm inspired by warm analog tones, live performances, and recordings that feel timeless and alive."
+            autograph="imgs/AutoMads.webp"
+          />
+        </li>
+        <li class="card" id="card2">
+          <IndexCard
+            producerNumber="#02"
+            topThreeAlbum1="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
+            producerImage="imgs/mads_felix.webp"
+            producerRole="[producer, mix and master engineer]"
+            producerName="Felix Ziska"
+            producerDescription="Inspired by vintage gear, late-night sessions, and organic performances, I aim to capture music with depth, soul, and lasting character."
+            autograph="imgs/AutoFelix.webp"
+          />
+        </li>
+        <li class="card" id="card3">
+          <IndexCard
+            producerNumber="#03"
+            topThreeAlbum1="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
+            producerImage="imgs/peter.webp"
+            producerRole="[producer, mix and master engineer]"
+            producerName="Peter Slot"
+            producerDescription="Rooted in classic recording techniques and modern atmosphere, I'm inspired by performances that feel alive, unpolished, and deeply human."
+            autograph="imgs/AutoPeter.webp"
+          />
+        </li>
+        <li class="card" id="card4">
+          <IndexCard
+            producerNumber="#04"
+            topThreeAlbum1="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
+            producerImage="imgs/Christian.webp"
+            producerRole="[producer & mix-engineer]"
+            producerName="Christian Afel"
+            producerDescription="I love building records that breathe — combining analog color, raw emotion, and live energy into mixes that feel honest and timeless."
+            autograph="imgs/AutoChristian.webp"
+          />
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section class="contact">
-    <div id="glitchbox">
-      <h2>LET'S GRAB A COFFEE</h2>
-      <p>LET'S GRAB A COFFEE</p>
-      <p>LET'S GRAB A COFFEE</p>
-    </div>
+    <h3>LET'S GRAB A COFFEE</h3>
+
     <p id="contact_text">
       Come by the studio sometime and hang out with us. We are a small team of
       producers and musicians who love making records in a relaxed, creative
@@ -127,7 +141,7 @@ import Layout from "../layouts/Layout.astro";
 
   .hero_section {
     position: relative;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 40px;
     overflow: hidden;
   }
@@ -155,7 +169,7 @@ import Layout from "../layouts/Layout.astro";
     place-items: center;
     width: 100%;
     height: 100%;
-    filter: contrast(1.2) saturate(1.3) blur(3px);
+    filter: contrast(1.2) saturate(1.3) blur(2px);
     mix-blend-mode: screen;
     pointer-events: none;
     transform: translate(var(--lottie-x), var(--lottie-y))
@@ -198,67 +212,127 @@ import Layout from "../layouts/Layout.astro";
   #see-work-btn {
     padding: 3px 6px 3px 18px;
     border-top-left-radius: 75px;
-    margin-left: 12vw;
+    margin-left: 34vw;
     stroke: var(--secondary);
     border: solid 1px var(--secondary);
+    text-decoration: none;
+    color: inherit;
   }
 
   #see-work-btn:active {
     background-color: transparent;
     border: solid 1px var(--primary);
     color: var(--primary);
-  }
-
-  /* What we do effekt, WHO WE ARE, Grab a coffee */
-  #glitchbox {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-  }
-
-  #glitchbox h2,
-  #glitchbox p {
-    font-family: var(--gopher);
-    font-size: var(--h2-size);
-    font-weight: var(--bold);
-    line-height: 85px;
-    mix-blend-mode: screen;
-    grid-row: 1/3;
-    grid-column: 1/6;
-  }
-
-  #glitchbox h2:nth-child(1) {
-    color: #f00;
-    filter: blur(1.5px);
-    mix-blend-mode: lighten;
-  }
-
-  #glitchbox p:nth-child(2) {
-    color: #00fd00;
-    mix-blend-mode: screen;
-    filter: blur(4px);
-    padding-left: 3px;
-  }
-
-  #glitchbox p:nth-child(3) {
-    color: #0000ff;
-    filter: blur(1.5px);
-    mix-blend-mode: lighten;
-    padding-left: 6px;
+    text-decoration: none;
   }
 
   .wwd_img,
   .wwd_grafik {
     width: 50%;
     display: grid;
-    margin-top: 40px;
+    margin-top: 80px;
     margin-bottom: 40px;
+  }
+
+  .wwd_img {
+    position: relative;
+    min-height: 700px;
+  }
+
+  .wwd_img_frame {
+    position: absolute;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .wwd_img_frame_1 {
+    width: 72%;
+    top: 0;
+    left: 0;
+  }
+
+  .wwd_img_frame_2 {
+    width: 44%;
+    top: 240px;
+    left: 50%;
+    z-index: 2;
+  }
+
+  #wwd_img_1 #wwd_img_2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #wwd_img_1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  #wwd_img_2 {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    object-position: 60% center;
+    transform: scale(0.7);
   }
   /* skal placeret til højre både på mobil og desktop
  .wwd_grafik {
 	align-items: end;
 	gap: 2rem;
 } */
+
+  /* INDEX CARDS */
+
+  :root {
+    --cards: 4;
+    --cardHeight: 40.5vh;
+    --cardTopPadding: 7rem;
+    --cardStickyStart: 10rem;
+    --cardMargin: 8vw;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #cards {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--cards), var(--cardHeight));
+    gap: var(--cardMargin);
+    padding-bottom: calc(var(--cards) * var(--cardTopPadding));
+    margin-bottom: var(--cardMargin);
+  }
+
+  #card1 {
+    --index: 1;
+  }
+
+  #card2 {
+    --index: 2;
+  }
+
+  #card3 {
+    --index: 3;
+  }
+
+  #card4 {
+    --index: 4;
+  }
+
+  .card {
+    position: sticky;
+    top: calc(
+      var(--cardStickyStart) + ((var(--index) - 1) * var(--cardTopPadding))
+    );
+  }
 
   .contact {
     text-align: right;
@@ -268,6 +342,12 @@ import Layout from "../layouts/Layout.astro";
     text-align: left;
   }
 
+  .who_we_are {
+    position: sticky;
+    top: 70px;
+    margin-bottom: 5rem;
+  }
+
   @media (min-width: 850px) {
     #see-work-btn:hover {
       background-color: transparent;
@@ -275,39 +355,37 @@ import Layout from "../layouts/Layout.astro";
       color: var(--contrast);
     }
 
-    #glitchbox h2,
-    #glitchbox p {
-      font-size: var(--h2-size-desk);
-      line-height: 200px;
-      font-weight: var(--medium);
+    .contact{
+      margin-bottom: 300px;
+      margin-top: 600px;
     }
-
-    .grid_2-6 {
-      display: grid;
-      grid-template-columns: repeat(2, 6fr);
-      gap: 1rem;
-    }
-    /* H2 + paragraph - overvejer at flytte What We do op over grid_2-6 og tilføje class "what_we_do" så vi kan style sådan samtidig med, at det står på samme linje??*/
-    .what_we_do,
-    .who_we_are,
-    .contact {
-      display: flex;
-      grid-column: 2 / span 2;
-      flex-direction: column;
-      justify-content: left;
-      text-align: left;
-      gap: 1rem;
-    }
-
-    .contact {
+    .contact h3 {
       text-align: right;
-      align-items: end;
     }
 
-    .contact_text {
-      max-width: 550px;
-      text-align: left;
+   #contact_text{
+      text-align: right;
+        margin-left: auto;
+        
     }
+
+     .what_we_do{
+      margin-top: 9rem;
+     }
+
+    .what_we_do h3 {
+      text-align: right;
+    }
+
+    .what_we_do p {
+      text-align: right;
+      max-width: 62ch;
+      margin-left: auto;
+    }
+
+     
+    }
+
 
     /* placering af billeder fra B-roll
 	#wwd_img_1 {
