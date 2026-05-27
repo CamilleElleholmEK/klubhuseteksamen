@@ -38,8 +38,8 @@ import GetInTouch from "../components/GetInTouch.astro";
     </div>
     <!-- Olli indsæt billeder ved siden af accordion her -->
     <div class="collage">
-      <img src="/imgs/orgel.webp" alt="">
-      <img id="collagetop" src="/imgs/AlbumPlaceholder.jpg" alt="">
+      <img src="/imgs/bluevan.webp" alt="The Blue Van band">
+      <img id="collagetop" src="/imgs/calby_album.webp" alt="While I Wait album">
     </div>
     <div class="accordionwrap">
       <button data-target="accordion1" class="accordion">The Blue Van</button>
@@ -95,7 +95,7 @@ import GetInTouch from "../components/GetInTouch.astro";
        I love working with texture, movement, and imperfections — the details that give a record personality and make it feel human. </p>
        <p>Whether the process is loud and chaotic or stripped back and intimate, I always focus on creating an environment where ideas can happen naturally and where the emotion of the music stays at the center__</p>
      </div>
-     <a href="/">See my work</a>
+     <a href="/listview">See my work</a>
     </div>
     <p>video her</p>
 </section>
@@ -145,6 +145,10 @@ import GetInTouch from "../components/GetInTouch.astro";
     height: 100vw;
     margin: 0 auto;
     margin-bottom: 64px;
+}
+
+#section4 div p:hover, #section4 div a:hover {
+  color: var(--contrast);
 }
 
 .imgwrap img {
@@ -264,7 +268,7 @@ object-position: 90% 100%;
 .collage {
 width: 70vw;
 position: relative;
-height: 90vw;
+height: 70vw;
 overflow: visible;
 margin-bottom: 16px;
 }
@@ -364,8 +368,9 @@ height: 100%;
   }
 
   .collage {
-   width: 20vw;
-   height: 25vw;
+   width: 22vw;
+   height: 22vw;
+   margin-right: 45px;
   } 
 
   #collagetop {
@@ -389,7 +394,7 @@ height: 100%;
 }
 
 .accordionwrap {
-  width: 50vw;
+  width: 45vw;
   height: fit-content;
 }
 

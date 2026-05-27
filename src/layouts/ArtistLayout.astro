@@ -20,6 +20,7 @@ import "../css/general.css";
     <title>Artists - Klubhuset</title>
   </head>
   <body>
+    <div id="grain-overlay"></div>
     <header>
       <div class="logo">
         <a id="logolink" href="/">
@@ -70,6 +71,17 @@ import "../css/general.css";
     width: 100%;
     height: 100%;
   }
+
+  #grain-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
   header {
     position: fixed;
     top: 0;
@@ -294,4 +306,14 @@ import "../css/general.css";
     burger.classList.toggle("active");
     nav.classList.toggle("active");
   }
+</script>
+<script is:inline src="/grained.min.js"></script>
+<script is:inline>
+  grained("#grain-overlay", {
+    animate: true,
+    patternWidth: 100,
+    patternHeight: 100,
+    grainOpacity: 0.08,
+    grainDensity: 1,
+  });
 </script>
