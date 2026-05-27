@@ -279,10 +279,10 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 
 // Funktion der lytter på knapper, ændrer deres udseende og sender videre til rette filtrering
   document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', btnactive );
+  btn.addEventListener('click', btnActive );
 });
 
-function btnactive(e) {
+function btnActive(e) {
   const valgt = e.target;
   const cards = document.querySelectorAll(".listcard");
   const btns = document.querySelectorAll(".filter-btn");
@@ -295,9 +295,9 @@ function btnactive(e) {
     valgt.classList.add("active");
 
     if (valgt.classList.contains("producer-btn")) {
-      filterproducer(e);
+      filterProducer(e);
     } else {
-      filtergenre(e);
+      filterGenre(e);
     }
   }
 }
@@ -305,12 +305,12 @@ function btnactive(e) {
 // Filtrering
 
   // Producere
-  function filterproducer(e) {
-  const valgtproducer = e.target.dataset.producer;
+  function filterProducer(e) {
+  const valgtProducer = e.target.dataset.producer;
   const cards = document.querySelectorAll(".listcard");
 
   cards.forEach((card) => {
-    if (card.dataset.producer == valgtproducer) {
+    if (card.dataset.producer == Palgtproducer) {
       card.classList.remove("hide");
     } else {
       card.classList.add("hide");
@@ -320,11 +320,11 @@ function btnactive(e) {
 }
 
   // Genre
-  function filtergenre(e) {
+  function filterGenre(e) {
   const cards = document.querySelectorAll<HTMLElement>(".listcard");
-  const valgtgenre = e.target.dataset.genre;
+  const valgtGenre = e.target.dataset.genre;
   cards.forEach((card) => {
-    if (card.dataset.genre && JSON.parse(card.dataset.genre).includes(valgtgenre)) {
+    if (card.dataset.genre && JSON.parse(card.dataset.genre).includes(valgtGenre)) {
       card.classList.remove("hide");
     } else {
       card.classList.add("hide");
@@ -336,10 +336,10 @@ function btnactive(e) {
 // Sortering
 // Knapper ændrer udseende
 document.querySelectorAll('.sort-btn').forEach(btn => {
-  btn.addEventListener('click', sortactive );
+  btn.addEventListener('click', sortActive );
 });
 
-function sortactive(e) {
+function sortActive(e) {
   const valgt = e.target;
   const cards = document.querySelectorAll(".listcard");
   const btns = document.querySelectorAll(".sort-btn");
@@ -363,8 +363,8 @@ function sort(e) {
   let newList;
 
   if (e.target.dataset.year) {
-    const valgtdir = e.target.dataset.year;
-    if (valgtdir == "acc") {
+    const valgtDir = e.target.dataset.year;
+    if (valgtDir == "acc") {
     newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.year - secondItem.dataset.year,
   );
   } else {
@@ -372,8 +372,8 @@ function sort(e) {
   );
   } 
   } else {
-    const valgtdir = e.target.dataset.artist;
-    if (valgtdir == "az") {
+    const valgtDir = e.target.dataset.artist;
+    if (valgtDir == "az") {
       newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.artist.localeCompare(secondItem.dataset.artist, "da")
   );
     } else {
