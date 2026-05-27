@@ -9,87 +9,102 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
 <section id="section1">
     <div class="imgh1">
     <div class="imgwrap">
-        <img src="/imgs/sliceTopRight.svg" alt="">
+        <img src="/imgs/mads.webp" alt="Mads Mølgaard">
     </div>
     <h1>Mads</h1>
     </div>
     
-    <h1>Mølgaard</h1>
+    <h1 class="lastname">Mølgaard</h1>
     <p class="micro">microcopy her</p>
     <div class="textgraphic">
     <img src="/imgs/sliceBtmLeft.svg" alt="Graphic element">
     <p>[Mix & Mastering Engineer]</p>
     </div>
-    <p>I’m Mads.</p>
-    <p>Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</p>
+    <p id="intromobile">I’m Mads. Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</p>
+    <h4 id="introdesk"><span id="introspan">.</span>I’m Mads. Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</h4>
     <p class="micro">microcopy her</p>
 </section>
 <section id="section2">
-    <div id="section2_1">
+  <div id="section2_1">
     <p class="micro">microcopy her</p>
-    <h2>Selected works</h2>
+    <h3>Selected works</h3>
+  </div>
+  <div id="section2_2">
+    <p class="micro">microcopy her</p>
+    <!-- Olli indsæt billeder ved siden af accordion her -->
+    <div class="collage">
+      <img src="/imgs/orgel.webp" alt="">
+      <img id="collagetop" src="/imgs/AlbumPlaceholder.jpg" alt="">
     </div>
-    <div id="section2_2">
-        <p class="micro">microcopy her</p>
-     <!-- Olli indsæt billeder ved siden af accordion her -->
-      <div class="collage">
-        <img src="" alt="">
-        <img src="" alt="">
+    <div class="accordionwrap">
+      <button data-target="accordion1" class="accordion">The Blue Van</button>
+      <div data-panel="accordion1" class="panel" hidden>
+        <div class="accordiontitle">
+          <p>[Roles]</p>
+          <p>Producer & Engineer</p>
+        </div>
+        <div class="accordiontext">
+          <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
+          <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
+          <a href="/">Read more</a>
+        </div>
       </div>
-      <div class="accordionwrap">
-        <button data-target="accordion1" class="accordion">The Blue Van</button>
-        <div data-panel="accordion1" class="panel" hidden>
-            <div class="accordiontitle">
-            <p>[Roles]</p>
-            <p>Producer & Engineer</p>
-            </div>
-            <div class="accordiontext">
-            <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
-            <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
-            <a href="/">Read more</a>
-            </div>
-        </div>
 
-        <button data-target="accordion2" class="accordion">Calby</button>
-        <div data-panel="accordion2" class="panel" hidden>
-            <div class="accordiontitle">
-            <p>[Roles]</p>
-            <p>Producer & Engineer</p>
-            </div>
-            <div class="accordiontext">
-            <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
-            <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
-            <a href="/">Read more</a>
-            </div>
+      <button data-target="accordion2" class="accordion">Calby</button>
+      <div data-panel="accordion2" class="panel" hidden>
+        <div class="accordiontitle">
+          <p>[Roles]</p>
+          <p>Producer & Engineer</p>
         </div>
+        <div class="accordiontext">
+          <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
+          <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
+          <a href="/">Read more</a>
+        </div>
+      </div>
 
-        <button data-target="accordion3" class="accordion">MØ</button>
-        <div data-panel="accordion3" class="panel" hidden>
-            <div class="accordiontitle">
-            <p>[Roles]</p>
-            <p>Producer & Engineer</p>
-            </div>
-            <div class="accordiontext">
-            <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
-            <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
-            <a href="/">Read more</a>
-            </div>
+      <button data-target="accordion3" class="accordion">MØ</button>
+      <div data-panel="accordion3" class="panel" hidden>
+        <div class="accordiontitle">
+          <p>[Roles]</p>
+          <p>Producer & Engineer</p>
+        </div>
+        <div class="accordiontext">
+          <p>Working with The Blue Van has been one of my favorite creative experiences. Their analog spirit and live energy reflect a lot of what I love about production in general — records with personality, movement, and human imperfections.</p>
+          <p>The productions I connect with most are the ones that prioritize feeling over perfection. I love music that sounds instinctive, emotional, and full of character.</p>
+          <a href="/">Read more</a>
+        </div>
       </div>
     </div>
+  </div>
     <p class="micro">microcopy her</p>
 </section>
 
 <section id="section3">
     <p class="micro">microcopy her</p>
-    <h2>My approach</h2>
-    <p >__My approach to production is centered around emotion, energy, and atmosphere. 
-I’m less interested in perfection and more interested in capturing something that feels alive and honest. 
-I love working with texture, movement, and imperfections — the details that give a record personality and make it feel human. </p>
-    <p>Whether the process is loud and chaotic or stripped back and intimate, I always focus on creating an environment where ideas can happen naturally and where the emotion of the music stays at the center__</p>
-    <a href="/">See my work</a>
+    <h3>My approach</h3>
+    <div id="section3_1">
+      <div>
+       <p >__My approach to production is centered around emotion, energy, and atmosphere. 
+       I’m less interested in perfection and more interested in capturing something that feels alive and honest. 
+       I love working with texture, movement, and imperfections — the details that give a record personality and make it feel human. </p>
+       <p>Whether the process is loud and chaotic or stripped back and intimate, I always focus on creating an environment where ideas can happen naturally and where the emotion of the music stays at the center__</p>
+     </div>
+     <a href="/">See my work</a>
+    </div>
     <p>video her</p>
 </section>
+<section id="section4">
+<button>get in touch her</button>
+<p id="dontwait"><span id="section4span">.</span>You don’t have to wait for perfect - Let’s Talk</p>
+<div>
+  <p>+45 27 21 22 40</p>
+  <a href="/">Mail</a>
+  <a href="/">Instagram</a>
+  <a href="/">Discogs</a>
+</div>
 
+</section>
 </ProducerLayout>
 
 <style>
@@ -98,9 +113,12 @@ I love working with texture, movement, and imperfections — the details that gi
   }
   
   body {
-    background-image: var(--gradient-dark);
-    background-attachment: fixed;
+    background-image: url("/imgs/producergraphic.svg"), var(--gradient-dark);
+    /* background-position: left top 80%, center; */
+    background-attachment: scroll, fixed;
+    background-size: 100%, 100%;
     min-height: 100%;
+    background-repeat: no-repeat;
   }
 
   .micro {
@@ -108,7 +126,7 @@ I love working with texture, movement, and imperfections — the details that gi
   }
 
   section {
-    width: 98vw;
+    width: 95vw;
     margin: 0 auto;
   }
 
@@ -136,6 +154,19 @@ I love working with texture, movement, and imperfections — the details that gi
   width: 12px;
   height: 11px;
   margin-right: 12px;
+}
+
+#introdesk {
+  display: none;
+}
+
+#intromobile {
+  max-width: 45ch;
+  margin-bottom: 32px;
+}
+
+#section2_1 {
+  margin-bottom: 16px;
 }
 
 .accordion {
@@ -168,7 +199,10 @@ I love working with texture, movement, and imperfections — the details that gi
 .panel {
   padding: 0 18px;
   background-color: transparent;
-  
+}
+
+.panel a {
+  margin-top: 16px;
 }
 
 .panel a, #section3 a {
@@ -181,6 +215,11 @@ I love working with texture, movement, and imperfections — the details that gi
     text-decoration: none;
     margin-bottom: 32px;
     display: inline-block;
+}
+
+.panel a:hover, #section3 a:hover {
+  border-color: var(--contrast);
+  color: var(--contrast);
 }
 
 .accordiontitle {
@@ -207,13 +246,27 @@ I love working with texture, movement, and imperfections — the details that gi
     margin-top: 16px;
 }
 
+#section3 {
+  margin-top: 64px;
+}
+
 /* Olli style billeder ved siden af accordion her */
 .collage {
-
+width: 70vw;
+position: relative;
+height: 90vw;
+overflow: visible;
+margin-bottom: 16px;
 }
 /* Og her */
-.collage img {
+.collage img:nth-child(1) {
+object-fit: fill;
+width: 100%;
+height: 100%;
+}
 
+#collagetop {
+  display: none;
 }
 
 .activebtn {
@@ -221,6 +274,144 @@ I love working with texture, movement, and imperfections — the details that gi
     border-bottom: none;
 }
 
+#section4span {
+  color: transparent;
+  padding-right: 10px;
+}
+
+#dontwait {
+  width: 12ch;
+}
+
+#section4 div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  text-transform: uppercase;
+  color: var(--secondary);
+  text-decoration: underline;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#section4 a {
+  color: var(--secondary);
+  font-weight: 300;
+  margin-top: 32px;
+}
+
+@media (min-width: 850px) {
+
+  .micro {
+    display: block;
+    font-size: 11px;
+  }
+
+  .imgh1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+  .imgh1 h1 {
+    order: -1;
+  }
+
+  .imgh1 .imgwrap {
+    width: 33vw;
+    margin: 0;
+  }
+
+  .lastname {
+    margin-bottom: 90px;
+  }
+
+  #introspan {
+    padding-right: 20vw;
+    color: transparent;
+  }
+
+  #intromobile {
+    display: none;
+  }
+
+  #introdesk {
+    display: block;
+  }
+
+  .textgraphic {
+    margin-bottom: 24px;
+    margin-top: 90px;
+  }
+
+  #section2_1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 190px;
+  }
+
+  .collage {
+   width: 20vw;
+   height: 25vw;
+  } 
+
+  #collagetop {
+    display: block;
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    transform: translate(-20%, -20%);
+    width: 70%;
+}
+
+#section2_2 {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordionwrap {
+  width: 50vw;
+  height: fit-content;
+}
+
+#section3_1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+#section3_1 div p {
+  max-width: 60ch;
+}
+
+#section3_1 div p:nth-child(2) {
+margin-top: 0;
+}
+
+#section3_1 a {
+  border-top-left-radius: 75px;
+  border-top-right-radius: 0px;
+  padding: 3px 6px 3px 18px;
+}
+
+#section3 {
+  margin-top: 190px;
+}
+
+#dontwait {
+  font-weight: var(--book);
+  line-height: 52px;
+  letter-spacing: -3%;
+  font-size: var(--h4-size);
+}
+
+#section4 div {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+}
 
 </style>
 
