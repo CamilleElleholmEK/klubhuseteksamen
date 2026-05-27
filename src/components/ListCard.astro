@@ -4,7 +4,10 @@ const {project} = Astro.props;
 
 <a href=`/details/${project.titel_album}` class="listcard" data-producer={project.producer} data-genre={JSON.stringify(project.genre)} data-role={JSON.stringify(project.role)} data-year={project.year} data-artist={project.artist} data-titel_album={project.albumcover.replace(/^"|"$/g, '')} data-spotify={project.spotify.replace(/^"|"$/g, '')}>
 <article>
-<img src={project.albumcover.replace(/^"|"$/g, '')} />
+    <div class="albumwrap">
+     <img src={project.albumcover.replace(/^"|"$/g, '')} />
+     <div class="albumoverlay"><p>View album</p></div>
+    </div>
 <div class="textbox">
     <div class="top">
         <p>{project.artist}</p>
@@ -24,6 +27,27 @@ const {project} = Astro.props;
         border: none;
     }
 
+    .albumwrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .albumoverlay {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        place-items: center;
+        background: rgba(9, 4, 1, 0.45);
+        color: var(--secondary);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+  .albumwrap:hover .albumoverlay {
+    opacity: 1;
+  }
+
     article {
         margin-bottom: 15px;
         border-bottom: solid 0.5px var(--secondary);
@@ -32,6 +56,8 @@ const {project} = Astro.props;
     img {
         border-radius: 3px;
         aspect-ratio: 1/1;
+        grid-column: 1/2;
+        grid-row: 1/2;
     }
     
     a {

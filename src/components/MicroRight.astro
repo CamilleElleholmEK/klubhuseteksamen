@@ -1,0 +1,28 @@
+---
+const {title} = Astro.props
+---
+<div class="micro">
+<p>{title}</p>
+<img src="/imgs/sliceBtmRight.svg" alt="Graphic element">
+</div>
+
+<style>
+    .micro {
+       display: none; 
+    }
+
+    @media (min-width: 850px) {
+        .micro {
+            display: flex;
+            justify-content: end;
+            font-size: 11px;
+            align-items: center;
+        }
+
+        .micro img {
+            width: 12px;
+            height: 12px;
+            margin-left: 32px;
+        }
+    }
+</style>
