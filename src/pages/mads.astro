@@ -3,6 +3,9 @@ import "../css/custom.css"
 import "../css/general.css"
 
 import ProducerLayout from '../layouts/ProducerLayout.astro';
+import MicroLeft from "../components/MicroLeft.astro";
+import MicroRight from "../components/MicroRight.astro";
+import GetInTouch from "../components/GetInTouch.astro";
 ---
 
 <ProducerLayout>
@@ -15,22 +18,24 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     </div>
     
     <h1 class="lastname">Mølgaard</h1>
-    <p class="micro">microcopy her</p>
+    <MicroLeft title="[We like it here]"/>
     <div class="textgraphic">
     <img src="/imgs/sliceBtmLeft.svg" alt="Graphic element">
     <p>[Mix & Mastering Engineer]</p>
     </div>
     <p id="intromobile">I’m Mads. Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</p>
     <h4 id="introdesk"><span id="introspan">.</span>I’m Mads. Drawn to imperfect sounds, tape texture, loud rooms, and records that feel alive. I love productions that are messy, emotional, and full of atmosphere.</h4>
-    <p class="micro">microcopy her</p>
+    <MicroLeft title="Vibes"/>
 </section>
 <section id="section2">
   <div id="section2_1">
-    <p class="micro">microcopy her</p>
+    <MicroLeft title="[Texture before polish]"/>
     <h3>Selected works</h3>
   </div>
   <div id="section2_2">
-    <p class="micro">microcopy her</p>
+    <div>
+     <MicroLeft title="Warmth"/>
+    </div>
     <!-- Olli indsæt billeder ved siden af accordion her -->
     <div class="collage">
       <img src="/imgs/orgel.webp" alt="">
@@ -77,11 +82,11 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
       </div>
     </div>
   </div>
-    <p class="micro">microcopy her</p>
+    <MicroRight title="[Texture before polish]"/>
 </section>
 
 <section id="section3">
-    <p class="micro">microcopy her</p>
+    <MicroRight title="Warmth"/>
     <h3>My approach</h3>
     <div id="section3_1">
       <div>
@@ -95,7 +100,7 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     <p>video her</p>
 </section>
 <section id="section4">
-<button>get in touch her</button>
+<GetInTouch/>
 <p id="dontwait"><span id="section4span">.</span>You don’t have to wait for perfect - Let’s Talk</p>
 <div>
   <p>+45 27 21 22 40</p>
@@ -113,16 +118,13 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
   }
   
   body {
+    margin-top: 128px;
     background-image: url("/imgs/producergraphic.svg"), var(--gradient-dark);
     /* background-position: left top 80%, center; */
     background-attachment: scroll, fixed;
     background-size: 100%, 100%;
     min-height: 100%;
     background-repeat: no-repeat;
-  }
-
-  .micro {
-    display: none;
   }
 
   section {
@@ -310,11 +312,6 @@ height: 100%;
 
 @media (min-width: 850px) {
 
-  .micro {
-    display: block;
-    font-size: 11px;
-  }
-
   .imgwrap {
     width: 36vw;
     height: 46vw;
@@ -384,6 +381,11 @@ height: 100%;
   margin-top: 32px;
   display: flex;
   justify-content: space-between;
+}
+
+#section2_2 div:nth-child(1) {
+  align-items: center;
+  display: flex;
 }
 
 .accordionwrap {

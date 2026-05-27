@@ -99,6 +99,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
   }
   
   body {
+    margin-top: 128px;
     background-image: var(--gradient-dark);
     background-attachment: fixed;
     min-height: 100%;
@@ -155,6 +156,18 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     font-family: var(--stolzl);
     color: var(--secondary);
     border: none;
+   }
+
+   button:hover {
+    color: var(--contrast);
+   }
+
+   button:hover svg {
+    stroke: var(--contrast);
+   }
+
+   #sort:hover {
+    border-color: var(--contrast);
    }
 
    #sort, .filter-btn, .sort-btn {
