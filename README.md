@@ -39,28 +39,27 @@ project/src/
 ├── layouts/
 │   ├── Layout.astro
 │   ├── ArtistLayout.astro
-│   ├── ProducerLayout.astro
-│   └── form.js
+│   └── ProducerLayout.astro
 ├── components/
-│   ├── AccordionContent.astro
 │   ├── GetInTouch.astro
 │   ├── IndexCard.astro
 │   ├── ListCard.astro
 │   ├── MicroLeft.astro
-│   ├── MicroRight.astro
-│   └── Welcome.astro
+│   └── MicroRight.astro
 └── README.md
 ```
 
 ### Filbeskrivelser
 
-- **Layout.astro** – implementerer vores html-skelet på astro pages
+- **Layout.astro** – implementerer header (forside version) og footer til index
+- **ArtistLayout.astro** – implementerer header (listview version) og footer til listview og [id]
+- **ProducerLayout.astro** – implementerer header (producer version) og footer til mads
 - **index.astro** – forside
 - **listview.astro** – Henter data fra Supabase og viser en liste med artisterne på siden.
 - **mads.astro** – viser detaljer om en valgt producer
 - **details/[id].astro** – viser detaljer om en valgt artist
-- **custom.css** – styrer designet
-- **general.css** – styrer designet
+- **custom.css** – css variabler
+- **general.css** – generel styling af fonte osv.
 
 ---
 
@@ -72,9 +71,7 @@ Astro-filerne – styrer det dynamiske indhold på de forskellige sider vha. Jav
 
 Bruges på forsiden.
 
-<!-- ikke noget dynamisk på vores index, fordi producere er ikke oprettet i API? /Te -->
-
-Her bliver indhold vist dynamisk, fx links eller kategorier.
+Indholdet består af en video, billeder, tekst og en producer oversigt bestående af 4 instances af komponenten "IndexCard.astro"
 
 ### listview.astro
 
@@ -89,7 +86,7 @@ Henter data fra Rest API'et og viser en liste med artisters album på siden.
 5. HTML bliver indsat i DOM'en
 6. Brugeren kan klikke på en artist
 
-### details.js
+### [id].astro
 
 Bruges til detaljesiden for artistens album. Den læser et id fra URL'en og henter derefter den rigtige artist fra Rest API'et.
 
@@ -97,9 +94,7 @@ Det gør det muligt at genbruge den samme HTML-side til mange artister. I stedet
 
 ### mads.astro
 
-<!-- You good med det her?? /Te -->
-
-Denne fil bruges til Klubhusets producere. På sigt skal den ligesom på listview for artister hente data fra et API for producerne, der viser udvalgte informationer for den valgte producer.
+Denne side bruges til Klubhusets forskellige producere. Siden "mads.astro" kan kopieres og udfyldes med en anden producers info. Siden er ikke dynamisk da der ikke er et API over producerne, men kun over deres projekter. Der er desuden ikke tale om særligt meget indhold, som hverken skal sorteres eller filtreres.
 
 ---
 
@@ -110,22 +105,20 @@ Vi har navngivet vores filer, variabler og funktioner så de så tydeligt som mu
 ### Eksempler på variabler
 
 ```javascript
-// OBS CamelCase eller ændre i teknisk doku //TE
-const valgtgenre;
-const valgtproducer;
+const valgtGenre;
+const valgtProducer;
 const allAlbums;
 ```
 
 ### Eksempler på funktioner
 
 ```javascript
-btnactive(e);
-filterproducer(e);
-filtergenre(e);
-sortactive(e);
+btnActive(e);
+filterProducer(e);
+filterGenre(e);
+sortActive(e);
 ```
 
-// OBS CamelCase eller ændre i teknisk doku //TE
 Vi har brugt camelCase i JavaScript, fordi det gør koden mere ensartet og lettere at læse.
 
 ---
@@ -139,24 +132,28 @@ Vi har prøvet ikke at skrive kommentarer til helt åbenlyse ting, men kun dér 
 **Eksempel:**
 
 ```javascript
-// Henter album fra Rest API'et
-export async function getStaticPaths() {
-  const endpoint =
-    "https://cslftqskycbszssbrjfq.supabase.co/rest/v1/artister?select=*";
+// Viser og skjuler filtreringspaneler
+const toggles = document.querySelectorAll < HTMLElement > ".filter-toggle";
+const panels = document.querySelectorAll < HTMLElement > ".filter-content";
+const svg = document.querySelectorAll < HTMLElement > ".svg";
 
-  const options = {
-    headers: { apikey: "sb_publishable_uJBiElMI8evEQetR2TtT2g_2o4KGmfP" },
-  };
-  const response = await fetch(endpoint, options);
-  const data = await response.json();
+toggles.forEach((toggle) => {
+  toggle.addEventListener("click", () => {
+    const target = toggle.dataset.target;
+    const targetPanel = [...panels].find((p) => p.dataset.panel === target);
 
-  return data.map((project) => {
-    return {
-      params: { id: project.titel_album },
-      props: { project },
-    };
+    panels.forEach((p) => {
+      if (p.dataset.panel !== target) p.hidden = true;
+    });
+    // Fjern active fra andre toggles
+    toggles.forEach((t) => {
+      if (t !== toggle) t.classList.remove("activebtn");
+    });
+
+    targetPanel.hidden = !targetPanel.hidden;
+    toggle.classList.toggle("activebtn", !targetPanel.hidden);
   });
-}
+});
 ```
 
 ---
@@ -203,13 +200,13 @@ Vi har brugt GitHub til at samarbejde om projektet.
 
 Vi har arbejdet med branches, så vi ikke sad og ændrede i det samme på samme tid.
 
-Vi navngav branchene med feature først og navnet på den, der lavede branchen til sidst.
+Vi navngav branchene med feature og navnet på den, der lavede branchen.
 
 ### Eksempler på branches
 
-- `producer_filter_funktion_Camille`
-- `teknisk_dokumentation_Te`
-- `link_id_glitch_tekst_spotify_Camille`
+- `listview-styling_c`
+- `index_setup_te`
+- `ollie_index2`
 
 ### Workflow
 
@@ -242,30 +239,35 @@ Vi har tænkt bæredygtighed ind i projektet ved at holde page weight under 250 
 
 ## Udfordringer undervejs
 
-<!-- Ej udfyldt endnu /TE -->
+Vi havde en udfordring med default browser styling af buttons ved klik. Nogle knapper flasher neonblå ved klik. Vi undersøgte vores egen kode og brugte inspector for at se hvor farven kom fra. Til sidst fandt vi ud af at det var browser specifik styling.
 
-En af vores udfordringer var at få data fra Rest API’et vist korrekt på siderne.
+**Løsning:**
+Indsat på button styling
 
-Det var også lidt svært at få id med videre i URL’en til detaljesiden.
+/_ Fjerner den browser specifikke blå farve ved klik _/
+-webkit-appearance: none;
+-webkit-tap-highlight-color: transparent;
+appearance: none;
+outline: none;
 
-**Løsninger:**
+Links i vores API (billeder og spotify imbed), er indsat med "" rundt om, da de ellers melder fejl. Når de så sættes ind i koden på følgende måde,  
+<img src={project.albumcover} />
+melder den fejl fordi den automatisk vil tage indholdet af albumcover feltet og indsætte det i "". Altså bliver linket indsat med dobbelt anførselstegn ""https://link.com"".
 
-- Console.logge data undervejs
-- Teste fetch-kald separat
-- Bruge URLSearchParams
-- Dele opgaverne mere tydeligt i gruppen
+**Løsning:**
+Indsat .replace for at erstatte '"' med ''
+
+<img src={project.albumcover.replace(/^"|"$/g, '')} />
 
 ---
 
 ## Mulige forbedringer
 
-<!-- Ej udfyldt endnu /TE -->
-
 Hvis vi skulle arbejde videre med projektet, kunne vi forbedre det ved at tilføje:
 
 - Søgefunktion
-- Error handling
-- Loading state
+- Stacking af filtre på listview
+- Optimering af bæredygtighed ift. videoer
 
 ---
 
