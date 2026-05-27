@@ -94,7 +94,17 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     </div>
     <p>video her</p>
 </section>
+<section id="section4">
+<button>get in touch her</button>
+<p id="dontwait"><span id="section4span">.</span>You don’t have to wait for perfect - Let’s Talk</p>
+<div>
+  <p>+45 27 21 22 40</p>
+  <a href="/">Mail</a>
+  <a href="/">Instagram</a>
+  <a href="/">Discogs</a>
+</div>
 
+</section>
 </ProducerLayout>
 
 <style>
@@ -103,9 +113,12 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
   }
   
   body {
-    background-image: var(--gradient-dark);
-    background-attachment: fixed;
+    background-image: url("/imgs/producergraphic.svg"), var(--gradient-dark);
+    /* background-position: left top 80%, center; */
+    background-attachment: scroll, fixed;
+    background-size: 100%, 100%;
     min-height: 100%;
+    background-repeat: no-repeat;
   }
 
   .micro {
@@ -113,7 +126,7 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
   }
 
   section {
-    width: 98vw;
+    width: 95vw;
     margin: 0 auto;
   }
 
@@ -148,7 +161,12 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
 }
 
 #intromobile {
-  max-width: 50ch;
+  max-width: 45ch;
+  margin-bottom: 32px;
+}
+
+#section2_1 {
+  margin-bottom: 16px;
 }
 
 .accordion {
@@ -181,7 +199,10 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
 .panel {
   padding: 0 18px;
   background-color: transparent;
-  
+}
+
+.panel a {
+  margin-top: 16px;
 }
 
 .panel a, #section3 a {
@@ -194,6 +215,11 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     text-decoration: none;
     margin-bottom: 32px;
     display: inline-block;
+}
+
+.panel a:hover, #section3 a:hover {
+  border-color: var(--contrast);
+  color: var(--contrast);
 }
 
 .accordiontitle {
@@ -220,12 +246,17 @@ import ProducerLayout from '../layouts/ProducerLayout.astro';
     margin-top: 16px;
 }
 
+#section3 {
+  margin-top: 64px;
+}
+
 /* Olli style billeder ved siden af accordion her */
 .collage {
 width: 70vw;
 position: relative;
 height: 90vw;
 overflow: visible;
+margin-bottom: 16px;
 }
 /* Og her */
 .collage img:nth-child(1) {
@@ -241,6 +272,32 @@ height: 100%;
 .activebtn {
     color: var(--contrast);
     border-bottom: none;
+}
+
+#section4span {
+  color: transparent;
+  padding-right: 10px;
+}
+
+#dontwait {
+  width: 12ch;
+}
+
+#section4 div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  text-transform: uppercase;
+  color: var(--secondary);
+  text-decoration: underline;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#section4 a {
+  color: var(--secondary);
+  font-weight: 300;
+  margin-top: 32px;
 }
 
 @media (min-width: 850px) {
@@ -342,6 +399,17 @@ margin-top: 0;
   margin-top: 190px;
 }
 
+#dontwait {
+  font-weight: var(--book);
+  line-height: 52px;
+  letter-spacing: -3%;
+  font-size: var(--h4-size);
+}
+
+#section4 div {
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 }
 
