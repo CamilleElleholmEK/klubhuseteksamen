@@ -90,6 +90,10 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     <div class="projectcontainer"> 
       {data.map((project) => <ListCard {project}/> )}
     </div>
+    <a id="to-top" href="#glitchbox">To the top <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.981019 5.82566C0.534117 6.17821 0.78341 6.89673 1.35263 6.89673L13.894 6.89673C14.4632 6.89673 14.7125 6.17821 14.2656 5.82566L7.9949 0.878938C7.77698 0.70703 7.4696 0.70703 7.25168 0.878938L0.981019 5.82566Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
   </section>
 </ArtistLayout>
 
@@ -151,26 +155,27 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     } */
 
 
-   button {
+   button, #to-top {
     background-color: transparent;
     font-family: var(--stolzl);
     color: var(--secondary);
     border: none;
+    text-decoration: none;
    }
 
-   button:hover {
+   button:hover, #to-top:hover {
     color: var(--contrast);
    }
 
-   button:hover svg {
+   button:hover svg, #to-top:hover svg {
     stroke: var(--contrast);
    }
 
-   #sort:hover {
+   #sort:hover, #to-top:hover {
     border-color: var(--contrast);
    }
 
-   #sort, .filter-btn, .sort-btn {
+   #sort, .filter-btn, .sort-btn, #to-top {
     border: solid 1px var(--secondary);
    }
 
@@ -179,7 +184,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     border-top-right-radius: 75px;
    }
 
-   #sort {
+   #sort, #to-top {
     padding: 3px 6px 3px 18px;
     border-top-left-radius: 75px;
    }

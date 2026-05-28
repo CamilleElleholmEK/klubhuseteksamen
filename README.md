@@ -97,6 +97,10 @@ Det gør det muligt at genbruge den samme HTML-side til mange artister. I stedet
 
 Denne side bruges til Klubhusets forskellige producere. Siden "mads.astro" kan kopieres og udfyldes med en anden producers info. Siden er ikke dynamisk da der ikke er et API over producerne, men kun over deres projekter. Der er desuden ikke tale om særligt meget indhold, som hverken skal sorteres eller filtreres.
 
+### Validering af kode
+
+Vi har valideret vores færdigbyggede kode (efter npm run build) med W3's validator. Den brokker sig over nogle ugyldige css værdier, såsom padding: auto. Der er ekstra script tags på nogle sider for at få grain og lottie filen til at virke optimalt, og det nævner validatoren også som et problem. Det største problem ifølge W3 er dog links fra listview til respektive details side. Linket er kodet som "<a href=`/details/${project.titel_album}`>" og hiver titel_album direkte fra Supabase hvor titlen er skrevet almindeligt og ikke sammensat som i kode. Linkene virker på den måde vi har gjort det, men W3 markerer det som en fejl.
+
 ---
 
 ## Navngivning
