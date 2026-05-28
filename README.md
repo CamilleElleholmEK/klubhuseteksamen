@@ -55,6 +55,7 @@ project/src/
 - **ArtistLayout.astro** – implementerer header (listview version) og footer til listview og [id]
 - **ProducerLayout.astro** – implementerer header (producer version) og footer til mads
 - **index.astro** – forside
+- **producer.astro** – side med producernes navne der fører dig videre til specifik producer side
 - **listview.astro** – Henter data fra Supabase og viser en liste med artisterne på siden.
 - **mads.astro** – viser detaljer om en valgt producer
 - **details/[id].astro** – viser detaljer om en valgt artist
@@ -221,22 +222,6 @@ Det gjorde det nemmere at holde styr på, hvem der lavede hvad.
 
 ---
 
-## Bæredygtighed
-
-<!-- Ej udfyldt endnu /TE -->
-<!-- EHHHHHEHEHE skal vi lige opdatere efter tjek/TE -->
-
-Vi har tænkt bæredygtighed ind i projektet ved at holde page weight under 250 kb samt en enkel informationasarkitektur.
-
-**Tiltag:**
-
-- Ingen videoer
-- Ingen tunge frameworks
-- Genbruge af kode
-- Optimerede billeder
-
----
-
 ## Udfordringer undervejs
 
 Vi havde en udfordring med default browser styling af buttons ved klik. Nogle knapper flasher neonblå ved klik. Vi undersøgte vores egen kode og brugte inspector for at se hvor farven kom fra. Til sidst fandt vi ud af at det var browser specifik styling.
@@ -268,6 +253,7 @@ Hvis vi skulle arbejde videre med projektet, kunne vi forbedre det ved at tilfø
 - Søgefunktion
 - Stacking af filtre på listview
 - Optimering af bæredygtighed ift. videoer
+- Optimering af bæredygtighed ift. billeder
 
 ---
 
