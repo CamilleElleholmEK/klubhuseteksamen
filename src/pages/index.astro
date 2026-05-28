@@ -3,15 +3,19 @@ import "../css/custom.css";
 import "../css/general.css";
 import Layout from "../layouts/Layout.astro";
 import IndexCard from "../components/IndexCard.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import MicroRight from "../components/MicroRight.astro";
 ---
 
 <!-- import ProducerCard/IndexCard, hvor end du laver componenten og ryk denne op i fench<33 from '../components/ProducerCard.astro'; -->
 <Layout>
   <section class="hero_section">
-    <div id="klubhuset-anim"></div>
-    <video autoplay muted loop playsinline>
-      <source src="/vids/b-roll.webm" type="video/webm" />
-    </video>
+    <div class="hero-media">
+      <div id="klubhuset-anim"></div>
+      <video autoplay muted loop playsinline aria-label="Atmospheric b-roll from the Klubhuset studio">
+        <source src="/vids/b-roll.webm" type="video/webm" />
+      </video>
+    </div>
     <div class="hero-klubhuset">
       <div class="herotekst">
         <h5>Music studio</h5>
@@ -20,6 +24,7 @@ import IndexCard from "../components/IndexCard.astro";
       </div>
     </div>
   </section>
+
 
   <section>
     <div class="what_we_do">
@@ -34,6 +39,7 @@ import IndexCard from "../components/IndexCard.astro";
         feels raw, honest, and timeless.
       </p>
     </div>
+
 
     <div class="wwd_img">
       <div class="wwd_img_frame wwd_img_frame_1">
@@ -56,9 +62,9 @@ import IndexCard from "../components/IndexCard.astro";
         <li class="card" id="card1">
           <IndexCard
             producerNumber="#01"
-            topThreeAlbum1="imgs/AlbumPlaceholder.jpg"
-            topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
-            topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
+            topThreeAlbum1="imgs/TheBlueVan.webp"
+            topThreeAlbum2="imgs/TheSavageRose.webp"
+            topThreeAlbum3="imgs/Calby.webp"
             producerImage="imgs/mads.webp"
             producerRole="[producer, mix and master engineer]"
             producerName="Mads Mølgaard"
@@ -73,7 +79,7 @@ import IndexCard from "../components/IndexCard.astro";
             topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
             topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
             producerImage="imgs/mads_felix.webp"
-            producerRole="[producer, mix and master engineer]"
+            producerRole="[producer, violonist]"
             producerName="Felix Ziska"
             producerDescription="Inspired by vintage gear, late-night sessions, and organic performances, I aim to capture music with depth, soul, and lasting character."
             autograph="imgs/AutoFelix.webp"
@@ -86,7 +92,7 @@ import IndexCard from "../components/IndexCard.astro";
             topThreeAlbum2="imgs/AlbumPlaceholder.jpg"
             topThreeAlbum3="imgs/AlbumPlaceholder.jpg"
             producerImage="imgs/peter.webp"
-            producerRole="[producer, mix and master engineer]"
+            producerRole="[Mix and master engineer]"
             producerName="Peter Slot"
             producerDescription="Rooted in classic recording techniques and modern atmosphere, I'm inspired by performances that feel alive, unpolished, and deeply human."
             autograph="imgs/AutoPeter.webp"
@@ -121,7 +127,9 @@ import IndexCard from "../components/IndexCard.astro";
       for hours, the door is always open for good people, good energy, and
       honest creativity.
     </p>
+       <GetInTouch />
   </section>
+   
 </Layout>
 
 <style>
@@ -140,18 +148,22 @@ import IndexCard from "../components/IndexCard.astro";
   }
 
   .hero_section {
-    position: relative;
     margin-top: 10px;
     margin-bottom: 40px;
     overflow: hidden;
   }
 
+  .hero-media {
+    position: relative;
+  }
+
   /* VIDEO */
-  .hero_section video {
+  .hero-media video {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: auto;
+    height: 90vh;
+    object-fit: cover;
     margin-inline: auto;
     position: relative;
     z-index: 1;
@@ -159,26 +171,18 @@ import IndexCard from "../components/IndexCard.astro";
 
   /* LOTTIE ANIMATION */
   #klubhuset-anim {
-    --lottie-x: -270px;
-    --lottie-y: 310px;
-    --lottie-scale: 1.4;
     position: absolute;
-    inset: 0;
+    left: 0;
+    bottom: 0;
     z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-    filter: contrast(1.2) saturate(1.3) blur(2px);
-    mix-blend-mode: screen;
+    width: 50%;
+    height: auto;
     pointer-events: none;
-    transform: translate(var(--lottie-x), var(--lottie-y))
-      scale(var(--lottie-scale));
-    transform-origin: center;
+        filter: contrast(1.2) saturate(1.3) blur(3px);
   }
 
   #klubhuset-anim svg {
-    width: min(100vw, 3000px) !important;
+    width: min(45vw, 500px) !important;
     height: auto !important;
     display: block;
   }
@@ -356,8 +360,8 @@ import IndexCard from "../components/IndexCard.astro";
     }
 
     .contact{
-      margin-bottom: 300px;
-      margin-top: 600px;
+      margin-bottom: 90px;
+      margin-top: 150px;
     }
     .contact h3 {
       text-align: right;
@@ -409,7 +413,7 @@ import IndexCard from "../components/IndexCard.astro";
       renderer: "svg",
       loop: false,
       autoplay: false,
-      path: "/data.json",
+      path: "/klubhuset.json",
     });
 
     const observer = new IntersectionObserver(
