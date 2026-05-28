@@ -30,9 +30,6 @@ h2 {
   font-size: var(--h2-size);
   font-weight: var(--bold);
   line-height: 87px;
-
-
-
 }
 
 h3 {
@@ -40,21 +37,19 @@ h3 {
   font-size: var(--h3-size);
   font-weight: var(--bold);
   line-height: 36px;
-  letter-spacing: -3%;
-
+  letter-spacing: 3%;
 }
 
 h1,
 h2,
 h3 {
-  filter: contrast(1.2) saturate(1.3) blur(3px);
+  filter: contrast(1.2) saturate(1.3) blur(1px);
   mix-blend-mode: screen;
   text-shadow:
-    -3px 0 0 cyan,
-    -6px 0 0 blue,
-    +3px 0 0 yellow,
-    +6px 0 0 red;
-
+    -1.5px 0 0 cyan,
+    -3px 0 0 blue,
+    +1.5px 0 0 yellow,
+    +3px 0 0 red;
 }
 
 h4 {
@@ -71,10 +66,10 @@ h5 {
 }
 
 p {
-  font-size: var(--body1-size);
+  font-size: var(--p-size);
   font-weight: var(--book);
   line-height: 18px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 /* Classes for text styling */
@@ -152,6 +147,18 @@ p {
     line-height: 105px;
   }
 
+  h1,
+  h2,
+  h3 {
+    filter: contrast(1.2) saturate(1.3) blur(3px);
+    mix-blend-mode: screen;
+    text-shadow:
+      -3px 0 0 cyan,
+      -6px 0 0 blue,
+      +3px 0 0 yellow,
+      +6px 0 0 red;
+  }
+
   /* h4 {
     font-size: var(--h4-size-desk);
     line-height: 34px;
@@ -160,12 +167,13 @@ p {
   h5 {
     font-size: var(--h5-size-desk);
     line-height: 28px;
-  }
+  } */
 
   p {
-    font-size: var(--body1-size-desk);
+    font-size: var(--p-size-desk);
     line-height: 24px;
-  } */
+    text-transform: uppercase;
+  }
 
   /* Classes for text styling */
 

@@ -14,10 +14,12 @@
 
   --gradient-light: linear-gradient(180deg, #0b0501 50.07%, #2a1c12 126.68%);
   --gradient-dark: linear-gradient(144deg, #0b0501 26.14%, #1b1109 77.2%);
-  --gradient-shadow: linear-gradient(180deg,
-      #0b0501 0%,
-      rgba(11, 5, 1, 0.22) 52.88%,
-      rgba(11, 5, 1, 0) 100%);
+  --gradient-shadow: linear-gradient(
+    180deg,
+    #0b0501 0%,
+    rgba(11, 5, 1, 0.22) 52.88%,
+    rgba(11, 5, 1, 0) 100%
+  );
 
   /******* Fonts *******/
 
