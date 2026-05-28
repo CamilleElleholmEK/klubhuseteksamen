@@ -53,8 +53,8 @@ import "../css/general.css";
       </div>
       <div id="glitchbox">
         <h2>Klubhuset©</h2>
-        <p>Klubhuset©</p>
-        <p>Klubhuset©</p>
+        <!-- <p>Klubhuset©</p>
+        <p>Klubhuset©</p> -->
       </div>
       <div id="line2">
         <p>[Dortheavej 4, 2400 KBH NV] CVR: 4768486347863</p>
@@ -236,13 +236,13 @@ import "../css/general.css";
     font-size: var(--h2-size);
     font-weight: var(--bold);
     line-height: 80px;
-    mix-blend-mode: screen;
+    /* mix-blend-mode: screen; */
     grid-row: 1/2;
     grid-column: 1/2;
     text-transform: none;
   }
 
-  #glitchbox h2:nth-child(1) {
+  /* #glitchbox h2:nth-child(1) {
     color: #f00;
     filter: blur(1.5px);
     mix-blend-mode: lighten;
@@ -260,10 +260,10 @@ import "../css/general.css";
     filter: blur(1.5px);
     mix-blend-mode: lighten;
     padding-left: 6px;
-  }
+  } */
 
   #line1 {
-    width: 40ch;
+    width: 42ch;
     margin-bottom: 8px;
     line-height: 18px;
     display: flex;
@@ -276,7 +276,7 @@ import "../css/general.css";
   }
 
   #line2 {
-    width: 23ch;
+    width: 25ch;
     margin-top: 8px;
     text-align: right;
     margin-left: auto;
@@ -288,6 +288,7 @@ import "../css/general.css";
   #line2 img {
     width: 12px;
     margin-left: 12px;
+    margin-bottom: 20px;
   }
   @media screen and (min-width: 850px) {
     header {
@@ -298,6 +299,39 @@ import "../css/general.css";
     }
     .burger {
       display: none;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      min-height: 123px;
+    }
+
+    #glitchbox {
+      order: -1;
+      align-self: end;
+    }
+
+    #line1 {
+      max-width: 35ch;
+      margin-bottom: 0;
+      /* height: fit-content; */
+    }
+
+    #line2 {
+      max-width: 25ch;
+      width: auto;
+      margin-left: 0;
+      
+    }
+
+    #line1 img {
+      margin-bottom: 7px;
+    }
+
+    #line2 img {
+      margin-bottom: 30px;
     }
   }
 </style>

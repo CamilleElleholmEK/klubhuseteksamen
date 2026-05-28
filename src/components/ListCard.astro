@@ -5,7 +5,7 @@ const {project} = Astro.props;
 <a href=`/details/${project.titel_album}` class="listcard" data-producer={project.producer} data-genre={JSON.stringify(project.genre)} data-role={JSON.stringify(project.role)} data-year={project.year} data-artist={project.artist} data-titel_album={project.albumcover.replace(/^"|"$/g, '')} data-spotify={project.spotify.replace(/^"|"$/g, '')}>
 <article>
     <div class="albumwrap">
-     <img src={project.albumcover.replace(/^"|"$/g, '')} />
+     <img src={project.albumcover.replace(/^"|"$/g, '')} alt="Album cover"/>
      <div class="albumoverlay"><p>View album</p></div>
     </div>
 <div class="textbox">
