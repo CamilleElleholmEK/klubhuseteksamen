@@ -5,6 +5,7 @@ import "../../css/general.css"
 import Layout from "../../layouts/Layout.astro"
 import ArtistLayout from "../../layouts/ArtistLayout.astro"
 import ListCard from "../../components/ListCard.astro"
+import ListCardTest from "../../components/ListCardTest.astro"
 
 export async function getStaticPaths() {
   const endpoint =
@@ -45,10 +46,10 @@ const related = allAlbums
 <section id="topsection">
 <div id="outer">
     <div id="spotifywrapper">
-    <img src={project.albumcover.replace(/^"|"$/g, '')} />
+    <img src={project.albumcover.replace(/^"|"$/g, '')} alt="Album cover"/>
     </div>
         <div id="spotify">
-         <iframe data-testid="embed-iframe" style="border-radius:12px" src={project.spotify.replace(/^"|"$/g, '')} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+         <iframe data-testid="embed-iframe" style="border-radius:12px" src={project.spotify.replace(/^"|"$/g, '')} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify audio player" aria-label="Spotify audio player"></iframe>
         </div>    
     <div id="inner">
         <div id="glitchbox">
@@ -56,15 +57,15 @@ const related = allAlbums
          <p>{project.titel_album}</p>
          <p>{project.titel_album}</p>
         </div>
-        <h5>{project.artist}</h5>
-        <h6>Album · {project.year}</h6>
+        <h2>{project.artist}</h2>
+        <h3>Album · {project.year}</h3>
         <div id="details">
             <div id="genre">
-                <h6>Genre:</h6>
+                <h3>Genre:</h3>
                 <p class="cap2">{project.genre.join(', ')}</p>
             </div>
             <div id="about">
-                <h6>[About the album]</h6>
+                <h3>[About the album]</h3>
                 <div id="aboutlists">
                     <div id="list1">
                         <p class="cap2">Producer</p>
@@ -87,10 +88,10 @@ const related = allAlbums
 <section id="bottomsection">
 <div id="samegenre">
     <a class="ctal" href="/listview">{project.genre[0]}</a>
-    <h3>Same genre</h2>
+    <h3>Same genre</h3>
 </div>
 <div id="container">
-    {related.map((project) => <ListCard {project} />)}
+    {related.map((project) => <ListCardTest {project} />)}
 </div>
 
 </section>
@@ -163,15 +164,33 @@ const related = allAlbums
         padding-left: 6px;
     }
 
-    #inner h6, #inner h5 {
+    #inner h3 {
         color: var(--contrast);
+        filter: none;
+        mix-blend-mode: none;
+        text-shadow: none;
+        font-family: var(--stolzl);
+        font-size: 18px;
+        font-weight: var(--book);
+        line-height: 20px;
     }
 
-    h5 {
+    #genre p {
+        line-height: 20px;
+    }
+
+    #inner h2 {
+        font-size: var(--h5-size);
+        font-weight: var(--book);
+        line-height: 31px;
+        filter: none;
+        mix-blend-mode: none;
+        text-shadow: none;
+        color: var(--contrast);
         margin-bottom: 2px;
     }
 
-    #about h6, #genre h6 {
+    #about h3, #genre h3 {
         margin-bottom: 4px;
     }
 
@@ -192,6 +211,7 @@ const related = allAlbums
         justify-content: end;
         align-items: end;
         margin-bottom: 8px;
+        background-color:  #16100B;
     }
 
     #samegenre h3 {

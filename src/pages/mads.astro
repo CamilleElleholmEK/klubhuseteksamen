@@ -28,11 +28,11 @@ import GetInTouch from "../components/GetInTouch.astro";
       that feel alive. I love productions that are messy, emotional, and full of
       atmosphere.
     </p>
-    <h4 id="introdesk">
+    <h2 id="introdesk">
       <span id="introspan">.</span>I’m Mads. Drawn to imperfect sounds, tape
       texture, loud rooms, and records that feel alive. I love productions that
       are messy, emotional, and full of atmosphere.
-    </h4>
+    </h2>
     <MicroLeft title="Vibes" />
   </section>
   <section id="section2">
@@ -240,6 +240,13 @@ import GetInTouch from "../components/GetInTouch.astro";
 
   #introdesk {
     display: none;
+    font-size: var(--h4-size);
+    font-weight: var(--book);
+    line-height: 52px;
+    letter-spacing: -3%;
+    filter: none;
+    mix-blend-mode: none;
+    text-shadow: none;
   }
 
   #intromobile {
@@ -419,6 +426,7 @@ import GetInTouch from "../components/GetInTouch.astro";
 
     .lastname {
       margin-bottom: 90px;
+      overflow-wrap: break-word;
     }
 
     #introspan {
