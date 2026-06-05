@@ -299,153 +299,118 @@ const data = await fetch(endpoint, options).then((response) => response.json());
    });
    });
 
+  //  Stackable filtrering
+  const aktiveProducere = [];
+  const aktiveGenrer = [];
 
-// Funktion der lytter på knapper, ændrer deres udseende og sender videre til rette filtrering
-//   document.querySelectorAll('.filter-btn').forEach(btn => {
-//   btn.addEventListener('click', btnActive );
-// });
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const valgt = e.target;
+      // Tjekker om det er en producerknap der er trykket på
+      const erProducer = valgt.classList.contains("producer-btn");
+      // En kompakt if/else. aktivtArray = aktiveProducere hvis erProducer er true, ellers aktivtArray = aktiveGenrer
+      const aktivtArray = erProducer ? aktiveProducere : aktiveGenrer;
+      // value = knappens producer data hvis erProducer er true, ellers value = knappens genre data
+      const value = erProducer ? valgt.dataset.producer : valgt.dataset.genre;
 
-// function btnActive(e) {
-//   const valgt = e.target;
-//   const cards = document.querySelectorAll(".listcard");
-//   const btns = document.querySelectorAll(".filter-btn");
-
-//   if (valgt.classList.contains("active")) {
-//     valgt.classList.remove("active");
-//     cards.forEach((card) => { card.classList.remove("hide"); });
-//   } else {
-//     btns.forEach((btn) => { btn.classList.remove("active"); });
-//     valgt.classList.add("active");
-
-//     if (valgt.classList.contains("producer-btn")) {
-//       filterProducer(e);
-//     } else {
-//       filterGenre(e);
-//     }
-//   }
-// }
-
-// Filtrering
-
-  // Producere
-//   function filterProducer(e) {
-//   const valgtProducer = e.target.dataset.producer;
-//   const cards = document.querySelectorAll(".listcard");
-
-//   cards.forEach((card) => {
-//     if (card.dataset.producer == Palgtproducer) {
-//       card.classList.remove("hide");
-//     } else {
-//       card.classList.add("hide");
-//     }
-//   })
-
-// }
-
-  // Genre
-
-  const genrebtns = document.querySelectorAll(".genre-btn");
-  const clearbtn = document.querySelector("#clearknap");
-  const cards = document.querySelectorAll(".listcard");
-
-  genrebtns.forEach((button) => button.addEventListener("click", filtertest));
-  const activefilters = [];
-
-  function filtertest(e) {
-    const valgtGenre = e.target.dataset.genre;
-    console.log(valgtGenre) 
-    if(valgtGenre == "Clear") {
-      genrebtns.forEach(button => button.classList.remove("active"));
-      activefilters.length=0;
-    }else{
-      e.target.classList.toggle("active");
-    }
-
-    if(valgtGenre != "Clear") {
-      const indexOfElm = activefilters.indexOf(valgtGenre);
-      if(indexOfElm == -1) {
-        activefilters.push(valgtGenre);
-      }else{
-        activefilters.splice(indexOfElm,1);
+      // finder hvor i det aktive array value'en er
+      const index = aktivtArray.indexOf(value);
+      if (index === -1) {
+        // Ikke aktiv endnu – tilføj til arrayet og tilføj active
+        aktivtArray.push(value);
+        valgt.classList.add("active");
+      } else {
+        // Allerede aktiv – fjern fra arrayet og fjern active
+        aktivtArray.splice(index, 1);
+        valgt.classList.remove("active");
       }
-    }
 
-    cards.forEach((card) => {
-      const parse = JSON.parse(card.dataset.genre)
-      if(activefilters.length == 0 || activefilters.length == genrebtns.length-1 || valgtGenre == "Clear"){
-        card.classList.remove("hide");
-      } else if(activefilters.includes(parse)){
+      anvendFiltre();
+    });
+  });
+
+  // Filtrerer alle cards efter indholdet af de to filter arrays
+  function anvendFiltre() {
+    const cards = document.querySelectorAll(".listcard");
+
+     cards.forEach(card => {
+      // Producer-tjek: hvis ingen producere er valgt (længde på arrayet=0), vil producerMatch være true på alle cards
+      // producerMatch er true hvis aktiveProducere arrayet indeholder kortets producer
+      const producerMatch =
+        aktiveProducere.length === 0 ||
+        aktiveProducere.includes(card.dataset.producer);
+
+      // Genre-tjek: hvis ingen genrer er valgt (længde på arrayet=0), vil genreMatch være true på alle cards
+      // Et card matcher hvis mindst ét af cardets genrer er i aktiveGenrer arrayet
+      const cardGenrer = JSON.parse(card.dataset.genre || "[]");
+      const genreMatch =
+        aktiveGenrer.length === 0 ||
+        aktiveGenrer.some(g => cardGenrer.includes(g));
+
+        // Begge skal passe, ellers tilføjes "hide"
+      if (producerMatch && genreMatch) {
         card.classList.remove("hide");
       } else {
         card.classList.add("hide");
       }
-      
     });
+
   }
 
-//   function filterGenre(e) {
-//   const cards = document.querySelectorAll<HTMLElement>(".listcard");
-//   const valgtGenre = e.target.dataset.genre;
-//   cards.forEach((card) => {
-//     if (card.dataset.genre && JSON.parse(card.dataset.genre).includes(valgtGenre)) {
-//       card.classList.remove("hide");
-//     } else {
-//       card.classList.add("hide");
-//     }
-//   })
-// }
+  // Sortering
 
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', sortActive);
+  });
 
-// Sortering
-// Knapper ændrer udseende
-// document.querySelectorAll('.sort-btn').forEach(btn => {
-//   btn.addEventListener('click', sortActive );
-// });
+  function sortActive(e) {
+  const valgt = e.target;
+  const btns = document.querySelectorAll(".sort-btn");
 
-// function sortActive(e) {
-//   const valgt = e.target;
-//   const cards = document.querySelectorAll(".listcard");
-//   const btns = document.querySelectorAll(".sort-btn");
+  if (valgt.classList.contains("active")) {
+    valgt.classList.remove("active");
+    // Gendan rækkefølge ved at køre filtrering igen uden at røre hide-klasser
+    genopretRækkefølge();
+  } else {
+    btns.forEach(btn => btn.classList.remove("active"));
+    valgt.classList.add("active");
+    sort(e);
+  }
+}
 
-//   if (valgt.classList.contains("active")) {
-//     valgt.classList.remove("active");
-//     cards.forEach((card) => { card.classList.remove("hide"); });
-//   } else {
-//     btns.forEach((btn) => { btn.classList.remove("active"); });
-//     valgt.classList.add("active");
-//     sort(e)
-//   }
-// }
+function sort(e) {
+  const cards = document.querySelectorAll(".listcard");
+  const container = document.querySelector(".projectcontainer");
+  let newList;
 
-// Selve sortering foregår her
+  if (e.target.dataset.year) {
+    const valgtDir = e.target.dataset.year;
+    if (valgtDir == "acc") {
+      newList = [...cards].sort((a, b) => a.dataset.year - b.dataset.year);
+    } else {
+      newList = [...cards].sort((a, b) => b.dataset.year - a.dataset.year);
+    }
+  } else {
+    const valgtDir = e.target.dataset.artist;
+    if (valgtDir == "az") {
+      newList = [...cards].sort((a, b) => a.dataset.artist.localeCompare(b.dataset.artist, "da"));
+    } else {
+      newList = [...cards].sort((a, b) => b.dataset.artist.localeCompare(a.dataset.artist, "da"));
+    }
+  }
 
-// function sort(e) {
-//   const cards = document.querySelectorAll<HTMLElement>(".listcard");
-//   const container = document.querySelector(".projectcontainer");
-//   container.textContent="";
-//   let newList;
-
-//   if (e.target.dataset.year) {
-//     const valgtDir = e.target.dataset.year;
-//     if (valgtDir == "acc") {
-//     newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.year - secondItem.dataset.year,
-//   );
-//   } else {
-//     newList = [...cards].sort((firstItem, secondItem) => secondItem.dataset.year - firstItem.dataset.year,
-//   );
-//   } 
-//   } else {
-//     const valgtDir = e.target.dataset.artist;
-//     if (valgtDir == "az") {
-//       newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.artist.localeCompare(secondItem.dataset.artist, "da")
-//   );
-//     } else {
-//       newList = [...cards].sort((firstItem, secondItem) => secondItem.dataset.artist.localeCompare(firstItem.dataset.artist, "da")
-//   );
-//     }
-//   }
-//    newList.forEach((card) => container.append(card));
-// }
-
+  // Tilføj cards i ny rækkefølge – hide-klasser røres ikke
+  newList.forEach(card => container.append(card));
+}
+    
+// Sorterer a-z hvis alle sorteringsknapper er slået fra. anvendFiltre kaldes som sikekrhedsnet
+function genopretRækkefølge() {
+  const cards = document.querySelectorAll(".listcard");
+  const container = document.querySelector(".projectcontainer");
+  [...cards]
+    .sort((a, b) => a.dataset.artist.localeCompare(b.dataset.artist, "da"))
+    .forEach(card => container.append(card));
+  anvendFiltre();
+}
 
 </script>
