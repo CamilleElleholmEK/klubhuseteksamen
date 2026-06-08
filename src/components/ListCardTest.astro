@@ -8,6 +8,7 @@ const {project} = Astro.props;
    <img src={project.albumcover.replace(/^"|"$/g, '')} alt="Album cover"/>
  </div>
  <div id="tekst">
+    <p>{project.year}</p>
     <p>{project.titel_album}</p>
     <p>{project.artist}</p>
     <p>{project.producer}</p>
@@ -56,7 +57,7 @@ const {project} = Astro.props;
         border-radius: 0px 0px 10px 10px;
     }
 
-    #tekst p:nth-child(1) {
+    #tekst p:nth-child(2) {
         font-family: var(--gopher);
         font-size: 22px;
         font-weight: var(--bold);
@@ -65,7 +66,7 @@ const {project} = Astro.props;
         margin-bottom: 2px;
     }
 
-    #tekst p:nth-child(2) {
+    #tekst p:nth-child(3) {
         font-size: 16.5px;
         font-weight: var(--book);
         text-transform: none;
@@ -73,7 +74,14 @@ const {project} = Astro.props;
         margin-bottom: 2px;
     }
 
-    #tekst p:nth-child(3) {
+    #tekst p:nth-child(4) {
+        font-size: 12px;
+        font-weight: var(--regular);
+        text-transform: none;
+        line-height: 16px;
+        color: var(--contrast);
+    }
+    #tekst p:nth-child(1) {
         font-size: 12px;
         font-weight: var(--regular);
         text-transform: none;
@@ -88,26 +96,32 @@ const {project} = Astro.props;
     }
 
     #tekst p:nth-child(1) {
-        font-size: 24px;
+        font-size: 12px;
         line-height: 28px;
     }
 
     #tekst p:nth-child(2) {
-        font-size: 18px;
+        font-size: 24px;
         line-height: 28px;
     }
 
     #tekst p:nth-child(3) {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    #tekst p:nth-child(4) {
         color: transparent;
         transition: color 0.5s, margin-top 0.5s;
         margin-top: -18px;
     }
+    
 
     a:hover #tekst {
         height: 70%;
     }
 
-    a:hover #tekst p:nth-child(3) {
+    a:hover #tekst p:nth-child(4) {
         color: var(--contrast);
         margin-top: 0;
     }

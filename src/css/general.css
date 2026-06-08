@@ -150,7 +150,7 @@ p {
   h1,
   h2,
   h3 {
-    filter: contrast(1.2) saturate(1.3) blur(3px);
+    filter: contrast(1.2) saturate(1) blur(1px);
     mix-blend-mode: screen;
     text-shadow:
       -3px 0 0 cyan,

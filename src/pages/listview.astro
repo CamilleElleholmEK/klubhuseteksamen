@@ -19,7 +19,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 <ArtistLayout>
   <section class="topsection">
     <div id="glitchbox">
-         <h1>Artists</h1>
+         <h1>Our work</h1>
          <!-- <p>Artists</p>
          <p>Artists</p> -->
          
@@ -45,38 +45,50 @@ const data = await fetch(endpoint, options).then((response) => response.json());
         <button class="filter-btn producer-btn" data-producer="felix">Felix Ziska</button>
         <button class="filter-btn producer-btn" data-producer="joakim">Joakim Lambek</button>
       </div>
-      <div class="filter-content" data-panel="genre" hidden>
-        <button data-genre="Alternative" class="filter-btn genre-btn">Alternative</button>
-        <button data-genre="Alternative Pop" class="filter-btn genre-btn">Alternative pop</button>
-        <button data-genre="Alternative rock" class="filter-btn genre-btn">Alternative rock</button>
-        <button data-genre="Ambient" class="filter-btn genre-btn">Ambient</button>
-        <button data-genre="Chamber pop" class="filter-btn genre-btn">Chamber pop</button>
-        <button data-genre="Classic" class="filter-btn genre-btn">Classic</button>
-        <button data-genre="Contemporary" class="filter-btn genre-btn">Contemporary</button>
-        <button data-genre="Contemporary jazz" class="filter-btn genre-btn">Contemporary jazz</button>
-        <button data-genre="Dream pop" class="filter-btn genre-btn">Dream pop</button>
-        <button data-genre="Electronic" class="filter-btn genre-btn">Electronic</button>
-        <button data-genre="Electronic pop" class="filter-btn genre-btn">Electronic pop</button>
-        <button data-genre="Experimental" class="filter-btn genre-btn">Experimental</button>
-        <button data-genre="Folk" class="filter-btn genre-btn">Folk</button>
-        <button data-genre="Funk pop" class="filter-btn genre-btn">Funk pop</button>
-        <button data-genre="Fusion" class="filter-btn genre-btn">Fusion</button>
-        <button data-genre="Garage rock" class="filter-btn genre-btn">Garage rock</button>
-        <button data-genre="Hiphop" class="filter-btn genre-btn">Hiphop</button>
-        <button data-genre="Indie" class="filter-btn genre-btn">Indie</button>
-        <button data-genre="Indie pop" class="filter-btn genre-btn">Indie pop</button>
-        <button data-genre="Indie rock" class="filter-btn genre-btn">Indie rock</button>
-        <button data-genre="Jazz" class="filter-btn genre-btn">Jazz</button>
-        <button data-genre="Nordic folk" class="filter-btn genre-btn">Nordic folk</button>
-        <button data-genre="Pop" class="filter-btn genre-btn">Pop</button>
-        <button data-genre="Pop rock" class="filter-btn genre-btn">Pop rock</button>
-        <button data-genre="Power pop" class="filter-btn genre-btn">Power pop</button>
-        <button data-genre="Progressive rock" class="filter-btn genre-btn">Progressive rock</button>
-        <button data-genre="Psychedelic rock" class="filter-btn genre-btn">Psychedelic rock</button>
-        <button data-genre="R&B" class="filter-btn genre-btn">R&B</button>
-        <button data-genre="Rap" class="filter-btn genre-btn">Rap</button>
+      <div id="genrebox" class="filter-content" data-panel="genre" hidden>
+        <div class="genregroup">
         <button data-genre="Rock" class="filter-btn genre-btn">Rock</button>
+        <button data-genre="Pop rock" class="filter-btn genre-btn">Pop rock</button>
+        <button data-genre="Indie rock" class="filter-btn genre-btn">Indie rock</button>
+        <button data-genre="Garage rock" class="filter-btn genre-btn">Garage rock</button>
+        <button data-genre="Alternative rock" class="filter-btn genre-btn">Alternative rock</button>
+        </div>
+        <div class="genregroup">
+        <button data-genre="Pop" class="filter-btn genre-btn">Pop</button>
+        <button data-genre="Funk pop" class="filter-btn genre-btn">Funk pop</button>
+        <button data-genre="Dream pop" class="filter-btn genre-btn">Dream pop</button>
+        <button data-genre="Electronic pop" class="filter-btn genre-btn">Electronic pop</button>
+        <button data-genre="Alternative Pop" class="filter-btn genre-btn">Alternative pop</button>
+        </div>
+        <div class="genregroup">
+        <button data-genre="Folk" class="filter-btn genre-btn">Folk</button>
+        <button data-genre="Classic" class="filter-btn genre-btn">Classic</button>
+        <button data-genre="Indie pop" class="filter-btn genre-btn">Indie pop</button>
+        <button data-genre="Nordic folk" class="filter-btn genre-btn">Nordic folk</button>
         <button data-genre="Singer-songwriter" class="filter-btn genre-btn">Singer-songwriter</button>
+        </div>
+        <div class="genregroup">
+        <button data-genre="Jazz" class="filter-btn genre-btn">Jazz</button>
+        <button data-genre="Ambient" class="filter-btn genre-btn">Ambient</button>
+        <button data-genre="Electronic" class="filter-btn genre-btn">Electronic</button>
+        <button data-genre="Experimental" class="filter-btn genre-btn">Experimental</button>
+        <button data-genre="Progressive rock" class="filter-btn genre-btn">Progressive rock</button>
+        </div>
+        <div class="genregroup">
+        <button data-genre="R&B" class="filter-btn genre-btn">R&B</button>
+        <button data-genre="Hiphop" class="filter-btn genre-btn">Hiphop</button>
+        <button data-genre="Alternative" class="filter-btn genre-btn">Alternative</button>
+        <button data-genre="Contemporary" class="filter-btn genre-btn">Contemporary</button>
+        <button data-genre="Psychedelic rock" class="filter-btn genre-btn">Psychedelic rock</button>
+        </div>
+        <div class="genregroup">
+          <button data-genre="Rap" class="filter-btn genre-btn">Rap</button>
+          <button data-genre="Indie" class="filter-btn genre-btn">Indie</button>
+          <button data-genre="Power pop" class="filter-btn genre-btn">Power pop</button>
+          <button data-genre="Chamber pop" class="filter-btn genre-btn">Chamber pop</button>
+          <button data-genre="Contemporary jazz" class="filter-btn genre-btn">Contemporary jazz</button>
+        </div>
+
       </div>
       <div class="filter-content" data-panel="sort" hidden>
         <button data-artist="az" class="sort-btn">Artist A-Z</button>
@@ -162,6 +174,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     color: var(--secondary);
     border: none;
     text-decoration: none;
+    
    }
 
    #to-top {
@@ -185,8 +198,50 @@ const data = await fetch(endpoint, options).then((response) => response.json());
    }
 
    .filter-btn, .sort-btn {
-    padding: 3px 18px 3px 6px;
+    padding: 3px 0 3px 6px;
     border-top-right-radius: 75px;
+   }
+
+   .filter-btn {
+    text-align: left;
+    width: fit-content;
+   }
+
+   #filter-panel {
+    margin-bottom: 16px;
+    margin-top: 16px;
+   }
+
+   #genrebox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+   }
+
+   .genregroup {
+    display: flex;
+    flex-direction: column;
+   }
+
+   .genregroup button {
+    margin-bottom: 5px;
+   }
+
+   .genregroup button:nth-child(1) {
+    width: 70px;
+   }
+   .genregroup button:nth-child(2) {
+    width: 90px;
+   }
+   .genregroup button:nth-child(3) {
+    width: 110px;
+   }
+   .genregroup button:nth-child(4) {
+    width: 130px;
+   }
+   .genregroup button:nth-child(5) {
+    width: 150px;
+    margin-bottom: 0px;
    }
 
    #sort, #to-top {
@@ -238,6 +293,10 @@ const data = await fetch(endpoint, options).then((response) => response.json());
     padding-left: 6px;
    }
 
+   .producer-btn, .sort-btn {
+    margin-right: 10px;
+   }
+
    /* .filter-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -249,8 +308,24 @@ const data = await fetch(endpoint, options).then((response) => response.json());
 
    .projectcontainer {
     margin-bottom: 40px;
-    max-width: 575px;
+    /* max-width: 575px; */
     margin: 0 auto;
+   }
+
+   #projectsection {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+   }
+
+   #projectsection .projectcontainer {
+    width: 100%;
+   }
+
+
+
+   [hidden] {
+    display: none !important;
    }
 
    @media (min-width: 850px) {
@@ -265,6 +340,14 @@ const data = await fetch(endpoint, options).then((response) => response.json());
       /* background: linear-gradient(to right, transparent 0%, transparent 49.9%, var(--secondary) 50%, transparent 50.1%); */
     }
 
+    .filter-btn, .sort-btn {
+    padding: 3px 18px 3px 6px;
+   }
+
+    #genrebox {
+    grid-template-columns: repeat(3, 1fr);
+   }
+
     .project {
       padding: 16px;
     }
@@ -274,6 +357,22 @@ const data = await fetch(endpoint, options).then((response) => response.json());
        line-height: 200px;
        font-weight: var(--medium);
     }
+
+    .genregroup button:nth-child(1) {
+    width: 90px;
+   }
+   .genregroup button:nth-child(2) {
+    width: 110px;
+   }
+   .genregroup button:nth-child(3) {
+    width: 130px;
+   }
+   .genregroup button:nth-child(4) {
+    width: 150px;
+   }
+   .genregroup button:nth-child(5) {
+    width: 170px;
+   }
    }
 
    @media (min-width: 1000px) {
@@ -281,6 +380,33 @@ const data = await fetch(endpoint, options).then((response) => response.json());
       grid-template-columns: 1fr 1fr 1fr;
       gap: 30px;
     }
+
+    
+   }
+
+   @media (min-width: 1200px) {
+    
+
+    #genrebox {
+    
+    grid-template-columns: repeat(6, 1fr);
+   }
+
+   .genregroup button:nth-child(1) {
+    width: 85px;
+   }
+   .genregroup button:nth-child(2) {
+    width: 105px;
+   }
+   .genregroup button:nth-child(3) {
+    width: 125px;
+   }
+   .genregroup button:nth-child(4) {
+    width: 145px;
+   }
+   .genregroup button:nth-child(5) {
+    width: 165px;
+   }
    }
 </style>
 
@@ -309,113 +435,118 @@ const data = await fetch(endpoint, options).then((response) => response.json());
    });
    });
 
+  //  Stackable filtrering
+  const aktiveProducere = [];
+  const aktiveGenrer = [];
 
-// Funktion der lytter på knapper, ændrer deres udseende og sender videre til rette filtrering
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', btnActive );
-});
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const valgt = e.target;
+      // Tjekker om det er en producerknap der er trykket på
+      const erProducer = valgt.classList.contains("producer-btn");
+      // En kompakt if/else. aktivtArray = aktiveProducere hvis erProducer er true, ellers aktivtArray = aktiveGenrer
+      const aktivtArray = erProducer ? aktiveProducere : aktiveGenrer;
+      // value = knappens producer data hvis erProducer er true, ellers value = knappens genre data
+      const value = erProducer ? valgt.dataset.producer : valgt.dataset.genre;
 
-function btnActive(e) {
-  const valgt = e.target;
-  const cards = document.querySelectorAll(".listcard");
-  const btns = document.querySelectorAll(".filter-btn");
+      // finder hvor i det aktive array value'en er
+      const index = aktivtArray.indexOf(value);
+      if (index === -1) {
+        // Ikke aktiv endnu – tilføj til arrayet og tilføj active
+        aktivtArray.push(value);
+        valgt.classList.add("active");
+      } else {
+        // Allerede aktiv – fjern fra arrayet og fjern active
+        aktivtArray.splice(index, 1);
+        valgt.classList.remove("active");
+      }
 
-  if (valgt.classList.contains("active")) {
-    valgt.classList.remove("active");
-    cards.forEach((card) => { card.classList.remove("hide"); });
-  } else {
-    btns.forEach((btn) => { btn.classList.remove("active"); });
-    valgt.classList.add("active");
+      anvendFiltre();
+    });
+  });
 
-    if (valgt.classList.contains("producer-btn")) {
-      filterProducer(e);
-    } else {
-      filterGenre(e);
-    }
+  // Filtrerer alle cards efter indholdet af de to filter arrays
+  function anvendFiltre() {
+    const cards = document.querySelectorAll(".listcard");
+
+     cards.forEach(card => {
+      // Producer-tjek: hvis ingen producere er valgt (længde på arrayet=0), vil producerMatch være true på alle cards
+      // producerMatch er true hvis aktiveProducere arrayet indeholder kortets producer
+      const producerMatch =
+        aktiveProducere.length === 0 ||
+        aktiveProducere.includes(card.dataset.producer);
+
+      // Genre-tjek: hvis ingen genrer er valgt (længde på arrayet=0), vil genreMatch være true på alle cards
+      // Et card matcher hvis mindst ét af cardets genrer er i aktiveGenrer arrayet
+      const cardGenrer = JSON.parse(card.dataset.genre || "[]");
+      const genreMatch =
+        aktiveGenrer.length === 0 ||
+        aktiveGenrer.some(g => cardGenrer.includes(g));
+
+        // Begge skal passe, ellers tilføjes "hide"
+      if (producerMatch && genreMatch) {
+        card.classList.remove("hide");
+      } else {
+        card.classList.add("hide");
+      }
+    });
+
   }
-}
 
-// Filtrering
+  // Sortering
 
-  // Producere
-  function filterProducer(e) {
-  const valgtProducer = e.target.dataset.producer;
-  const cards = document.querySelectorAll(".listcard");
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', sortActive);
+  });
 
-  cards.forEach((card) => {
-    if (card.dataset.producer == Palgtproducer) {
-      card.classList.remove("hide");
-    } else {
-      card.classList.add("hide");
-    }
-  })
-
-}
-
-  // Genre
-  function filterGenre(e) {
-  const cards = document.querySelectorAll<HTMLElement>(".listcard");
-  const valgtGenre = e.target.dataset.genre;
-  cards.forEach((card) => {
-    if (card.dataset.genre && JSON.parse(card.dataset.genre).includes(valgtGenre)) {
-      card.classList.remove("hide");
-    } else {
-      card.classList.add("hide");
-    }
-  })
-}
-
-
-// Sortering
-// Knapper ændrer udseende
-document.querySelectorAll('.sort-btn').forEach(btn => {
-  btn.addEventListener('click', sortActive );
-});
-
-function sortActive(e) {
+  function sortActive(e) {
   const valgt = e.target;
-  const cards = document.querySelectorAll(".listcard");
   const btns = document.querySelectorAll(".sort-btn");
 
   if (valgt.classList.contains("active")) {
     valgt.classList.remove("active");
-    cards.forEach((card) => { card.classList.remove("hide"); });
+    // Gendan rækkefølge ved at køre filtrering igen uden at røre hide-klasser
+    genopretRækkefølge();
   } else {
-    btns.forEach((btn) => { btn.classList.remove("active"); });
+    btns.forEach(btn => btn.classList.remove("active"));
     valgt.classList.add("active");
-    sort(e)
+    sort(e);
   }
 }
 
-// Selve sortering foregår her
-
 function sort(e) {
-  const cards = document.querySelectorAll<HTMLElement>(".listcard");
+  const cards = document.querySelectorAll(".listcard");
   const container = document.querySelector(".projectcontainer");
-  container.textContent="";
   let newList;
 
   if (e.target.dataset.year) {
     const valgtDir = e.target.dataset.year;
     if (valgtDir == "acc") {
-    newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.year - secondItem.dataset.year,
-  );
-  } else {
-    newList = [...cards].sort((firstItem, secondItem) => secondItem.dataset.year - firstItem.dataset.year,
-  );
-  } 
+      newList = [...cards].sort((a, b) => a.dataset.year - b.dataset.year);
+    } else {
+      newList = [...cards].sort((a, b) => b.dataset.year - a.dataset.year);
+    }
   } else {
     const valgtDir = e.target.dataset.artist;
     if (valgtDir == "az") {
-      newList = [...cards].sort((firstItem, secondItem) => firstItem.dataset.artist.localeCompare(secondItem.dataset.artist, "da")
-  );
+      newList = [...cards].sort((a, b) => a.dataset.artist.localeCompare(b.dataset.artist, "da"));
     } else {
-      newList = [...cards].sort((firstItem, secondItem) => secondItem.dataset.artist.localeCompare(firstItem.dataset.artist, "da")
-  );
+      newList = [...cards].sort((a, b) => b.dataset.artist.localeCompare(a.dataset.artist, "da"));
     }
   }
-   newList.forEach((card) => container.append(card));
-}
 
+  // Tilføj cards i ny rækkefølge – hide-klasser røres ikke
+  newList.forEach(card => container.append(card));
+}
+    
+// Sorterer a-z hvis alle sorteringsknapper er slået fra. anvendFiltre kaldes som sikekrhedsnet
+function genopretRækkefølge() {
+  const cards = document.querySelectorAll(".listcard");
+  const container = document.querySelector(".projectcontainer");
+  [...cards]
+    .sort((a, b) => a.dataset.artist.localeCompare(b.dataset.artist, "da"))
+    .forEach(card => container.append(card));
+  anvendFiltre();
+}
 
 </script>
