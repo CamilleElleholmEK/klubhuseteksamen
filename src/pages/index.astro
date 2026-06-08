@@ -11,7 +11,7 @@ import GetInTouch from "../components/GetInTouch.astro";
 <Layout>
   <section class="hero_section">
     <div class="hero-media">
-      <h1 id="klubhuset-anim"></h1>
+      <h1 id="klubhuset-anim" aria-label="Klubhuset"></h1>
       <video autoplay muted loop playsinline aria-label="Atmospheric b-roll from the Klubhuset studio">
         <source src="/vids/b-roll.webm" type="video/webm" />
       </video>
@@ -449,6 +449,12 @@ import GetInTouch from "../components/GetInTouch.astro";
       loop: false,
       autoplay: false,
       path: "/klubhuset.json",
+    });
+
+    animation?.addEventListener("DOMLoaded", () => {
+      container.querySelectorAll("g[aria-label]").forEach((el) => {
+        el.removeAttribute("aria-label");
+      });
     });
 
     const observer = new IntersectionObserver(
