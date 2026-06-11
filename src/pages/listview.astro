@@ -506,7 +506,7 @@ const data = await fetch(endpoint, options).then((response) => response.json());
   if (valgt.classList.contains("active")) {
     valgt.classList.remove("active");
     // Gendan rækkefølge ved at køre filtrering igen uden at røre hide-klasser
-    genopretRækkefølge();
+    reset();
   } else {
     btns.forEach(btn => btn.classList.remove("active"));
     valgt.classList.add("active");
@@ -539,8 +539,8 @@ function sort(e) {
   newList.forEach(card => container.append(card));
 }
     
-// Sorterer a-z hvis alle sorteringsknapper er slået fra. anvendFiltre kaldes som sikekrhedsnet
-function genopretRækkefølge() {
+// Sorterer a-z hvis alle sorteringsknapper er slået fra. anvendFiltre kaldes som sikkerhedsnet
+function reset() {
   const cards = document.querySelectorAll(".listcard");
   const container = document.querySelector(".projectcontainer");
   [...cards]
